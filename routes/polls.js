@@ -74,6 +74,12 @@ module.exports = (knex) => {
 
   router.put("/polls/:id", (req, res) => {
     let id = req.params.id;
+    let optionsArray = JSON.parse(req.body.options);
+    console.log(typeof optionsArray);
+    optionsArray.forEach((option) => {
+      console.log('OPTION ID: ', option.option_id);
+      console.log('WEIGHT: ', option.weight);
+    });
     res.send("Succesful PUT /polls/:id with id: " + id);
   });
   return router;
