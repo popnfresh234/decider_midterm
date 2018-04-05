@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-
+const mailgun = require('../mailgun.js')
 
 
 module.exports = (knex) => {
@@ -80,6 +80,7 @@ module.exports = (knex) => {
       .where('id', id)
       .then((result) => {
         let email = result[0].email;
+        mailgun(email);
         console.log(email);
       });
 
