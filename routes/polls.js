@@ -7,7 +7,7 @@ module.exports = (knex) => {
 
   router.get("/", (req, res) => {
     console.log("GET /");
-    res.send("Succesful GET /");
+    res.render('index');
   });
 
   router.get("/polls/:id", (req, res)=> {
