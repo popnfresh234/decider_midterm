@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Decider</title>
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -12,6 +12,44 @@
   </head>
 
   <body>
-    <h1>Hello World!</h1>
+    <section>
+      <h1>Decider</h1>
+      <form name="email">
+        <input name="email" placeholder="Enter email">
+        <button type="submit">Get Started</button>
+      </form>
+    </section>
+
+    <section>
+      <h1 class="greeting">Hello! email@email.email</h1>
+      <h2 class="poll-header">Can't make up your mind?</h2>
+      <form>
+        <textarea placeholder="What's your poll name?"></textarea>
+        <button type="submit">Next Step</button>
+      </form>
+    </section>
+
+    <section>
+      <h1 class="poll-title">What movie should we see?</h1>
+      <h2 class="options">Give me the options!</h2>
+      <form>
+        <textarea placeholder="Option"></textarea>
+        <textarea placeholder="Description"></textarea>
+        <button>Enter Option</button>
+        <button>Delete</button>
+        <button type="submit">Create Poll</button>
+      </form>
+    </section>
+
+    <section>
+      <h1>Poll Created!</h1>
+      <h2 class="poll-title">What movie should we see?</h2>
+      <h4 id="share-poll">Share</h4>
+      <a href="#">decider/moviePoll</a>
+      <h4 id="poll-results">Results</h4>
+      <a href="#">decider/moviePollResults</a>
+    </section>
+
+
   </body>
 </html>
