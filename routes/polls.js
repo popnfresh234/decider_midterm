@@ -7,18 +7,20 @@ module.exports = (knex) => {
 
   router.get("/", (req, res) => {
     console.log("GET /");
-    res.send("Succesful GET /");
+    res.render('index');
   });
 
   router.get("/polls/:id", (req, res)=> {
     let id = req.params.id;
     console.log("/polls/:id: ", id);
-    res.send("Succesful GET /:id with id: " + id);
+    //res.send("Succesful GET /:id with id: " + id);
     knex('poll')
       .innerJoin('option', 'poll.id', '=', 'option.poll_id')
       .where('poll.id', id)
       .then((results) => {
         console.log(results);
+        let templateVars = {results: results};
+        res.render('poll', templateVars);
       });
   });
 
@@ -31,6 +33,8 @@ module.exports = (knex) => {
       .where('poll.id', id)
       .then((results) => {
         console.log(results);
+        let templateVars = {results: results};
+        res.render('results', templateVars);
       });
   });
 
@@ -48,7 +52,7 @@ module.exports = (knex) => {
       .returning('id')
       .insert({title: title, email: email})
       .then((id) =>  {
-        console.log('Succesful inert, ID is: ' + id);
+        console.log('Succesful insert, ID is: ' + id);
 
         //Handle inseting options here
         optionArray.forEach((option) => {
