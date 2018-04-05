@@ -1,15 +1,39 @@
 $(() => {
+  //Renders Poll Title Page
+  $('#start').click(function(event){
+      event.preventDefault();
+    $('.home').addClass('d-none');
+    $('.poll-title-page').removeClass('d-none');
+  });
+  //Renders Poll Options Page
+    $('#nextStep').click(function(event){
+      event.preventDefault();
+    $('.poll-title-page').addClass('d-none');
+    $('.poll-options-page').removeClass('d-none');
+  });
+    //Renders Created Poll Page
+    $('#createPoll').click(function(event){
+      event.preventDefault();
+    var poll = {};
+    var pollTitle = $('.poll-title').val();
+    var email = $('.email').val();
+    var optionArray = []
+    console.log(email);
+    $('li').each(function(index) {
+      optionArray.push({title: $(this).find('.optionTitle').text(),
+       description: $(this).find('.description').text()
+     });
+    })
+    poll.title = pollTitle;
+    poll.email = email;
+    poll.options = optionArray;
+    console.log(poll);
 
-  $('#delete').on('click', function(){
 
-  })
 
-  $('#start').on('click'), function(event){
-    event.preventDefault();
-    console.log("Start button");
-    $('.home').hide();
-    $('.poll-title-page').removeClass('.d-none');
-  }
+    $('.poll-options-page').hide();
+    $('.created-poll-page').removeClass('d-none');
+  });
 
   $('.createPoll').on('click',function(poll) {
   $('.poll-container').append(poll.title)
@@ -19,11 +43,19 @@ $(() => {
     })
   });
 
-  $('#optionTitle').hover(function() {
-    $('#optionDescription').slideToggle();
-  });
+    $('#enterOption').click(function(event) {
+      event.preventDefault();
+      $('.poll-options').append('<li class="optionItem"><p class="optionTitle">' + $('.option').val() + '</p> <p class="description d-none">' + $('.description').val() + '</p><button class="delete">Delete</button></li>');
+    });
 
+    $('.poll-options-page').on('click', '.delete', (function(event){
+      event.preventDefault();
+      $(this).closest('li').remove();
+    }));
 
+    $('.poll-options-page').on('mouseenter', '.optionTitle', (function() {
+      $('.description').removeClass('d-none');
+    }));
 
 });
 
