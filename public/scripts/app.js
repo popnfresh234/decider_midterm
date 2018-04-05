@@ -29,7 +29,15 @@ $(() => {
     poll.options = optionArray;
     console.log(poll);
 
+    $.ajax({
+      url: '/polls',
+      method: 'POST',
+      data: poll,
+      dataType: 'json',
+      success: function() {
 
+      }
+    });
 
     $('.poll-options-page').hide();
     $('.created-poll-page').removeClass('d-none');
