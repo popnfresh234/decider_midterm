@@ -74,6 +74,15 @@ module.exports = (knex) => {
 
   router.put("/polls/:id", (req, res) => {
     let id = req.params.id;
+
+    knex('poll')
+      .select('email')
+      .where('id', id)
+      .then((result) => {
+        let email = result[0].email;
+        console.log(email);
+      });
+
     let optionsArray = JSON.parse(req.body.options);
     console.log(typeof optionsArray);
     optionsArray.forEach((option) => {
