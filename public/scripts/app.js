@@ -1,4 +1,5 @@
 $(() => {
+
   $.ajax({
     method: "GET",
     url: "/api/users"
@@ -17,6 +18,7 @@ $(() => {
       $('.poll-container').append("<p>" + option.description + "</p>");
     })
   });
+
 });
 
 const poll = {
