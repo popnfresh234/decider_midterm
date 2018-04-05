@@ -39,7 +39,8 @@ module.exports = (knex) => {
   });
 
   router.post("/polls/", (req, res) => {
-    let poll = JSON.parse(req.body.poll);
+    console.log(req.body);
+    let poll = req.body;
     console.log("POST / ", poll);
     //Cet poll data form poll object
     let title = poll.title;
@@ -84,7 +85,7 @@ module.exports = (knex) => {
         console.log(email);
       });
 
-    let optionsArray = JSON.parse(req.body.options);
+    let optionsArray = req.body;
     console.log(typeof optionsArray);
     optionsArray.forEach((option) => {
       console.log('OPTION ID: ', option.option_id);
