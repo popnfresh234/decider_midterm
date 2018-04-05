@@ -3,6 +3,7 @@
   <head>
     <title>Decider</title>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -12,43 +13,55 @@
   </head>
 
   <body>
-    <section>
-      <h1>Decider</h1>
-      <form name="email">
-        <input name="email" placeholder="Enter email">
-        <button type="submit">Get Started</button>
-      </form>
-    </section>
 
-    <section>
-      <h1 class="greeting">Hello! email@email.email</h1>
-      <h2 class="poll-header">Can't make up your mind?</h2>
-      <form>
-        <textarea placeholder="What's your poll name?"></textarea>
-        <button type="submit">Next Step</button>
-      </form>
-    </section>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/" style="height:100px">
+        <a class="navbar-brand p-0" href="/" target="_blank">
+          <span>Decider</span>
+        </a>
+      </a>
+    </nav>
 
-    <section>
-      <h1 class="poll-title">What movie should we see?</h1>
-      <h2 class="options">Give me the options!</h2>
-      <form>
-        <textarea placeholder="Option"></textarea>
-        <textarea placeholder="Description"></textarea>
-        <button>Enter Option</button>
-        <button>Delete</button>
-        <button type="submit">Create Poll</button>
-      </form>
-    </section>
+    <div class="mx-auto" style="width:50vh">
 
-    <section>
-      <h1>Poll Created!</h1>
-      <h2 class="poll-title">What movie should we see?</h2>
-      <h4 id="share-poll">Share</h4>
-      <a href="#">decider/moviePoll</a>
-      <h4 id="poll-results">Results</h4>
-      <a href="#">decider/moviePollResults</a>
-    </section>
+      <section class="home">
+        <h1>Decider</h1>
+        <form name="email">
+          <input name="email" placeholder="Enter email">
+          <button id="start">Get Started</button>
+        </form>
+      </section>
+
+      <section class="poll-title-page d-none">
+        <h1 class="greeting">Hello! email@email.email</h1>
+        <h2 class="poll-header">Can't make up your mind?</h2>
+        <form>
+          <textarea placeholder="What's your poll name?"></textarea>
+          <button type="submit">Next Step</button>
+        </form>
+      </section>
+
+      <section class="d-none">
+        <h1 class="poll-title">What movie should we see?</h1>
+        <h2 class="options">Give me the options!</h2>
+        <form>
+          <textarea placeholder="Option"></textarea>
+          <textarea placeholder="Description"></textarea>
+          <button>Enter Option</button>
+          <button id="delete">Delete</button>
+          <button class="createPoll" name= "createPoll" type="submit">Create Poll</button>
+        </form>
+      </section>
+
+      <section class="d-none">
+        <h1>Poll Created!</h1>
+        <h2 class="poll-title">What movie should we see?</h2>
+        <h4 id="share-poll">Share</h4>
+        <a href="#">decider/moviePoll</a>
+        <h4 id="poll-results">Results</h4>
+        <a href="#">decider/moviePollResults</a>
+      </section>
+    </div>
 
 
   </body>
