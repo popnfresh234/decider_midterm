@@ -27,7 +27,6 @@ module.exports = (knex) => {
     res.send("Succesful GET /polls/:id with id: " + id);
     knex('poll')
       .join('option', 'poll.id', '=', 'option.poll_id')
-      .select('*')
       .where('poll.id', id)
       .then((results) => {
         console.log(results);
