@@ -12,17 +12,51 @@ module.exports = (knex) => {
     let id = req.params.id;
     console.log("/polls/:id: ", id);
     res.send("Succesful GET /:id with id: " + id);
+    knex('poll')
+      .where('id', id)
+      .then((results) => {
+        console.log(results);
+      });
   });
 
   router.get("/polls/:id/result", (req, res)=> {
     let id = req.params.id;
     console.log("/polls/:id/result: ", id);
     res.send("Succesful GET /polls/:id with id: " + id);
+    knex('poll')
+      .join('option', 'poll.id', '=', 'option.poll_id')
+      .select('*')
+      .where('poll.id', id)
+      .then((results) => {
+        console.log(results);
+      });
   });
 
   router.post("/polls/", (req, res) => {
     let poll = req.body.poll;
     console.log("POST / ", poll);
+    //Cet poll data form poll object
+    let title = poll.title;
+    let email = poll.email;
+    let optionArray = poll.options;
+
+    //Insert poll
+    knex('poll')
+      .returning('id')
+      .insert({title: title, email: email})
+      .then((id) =>  {
+        console.log('Succesful inert, ID is: ' + id);
+
+        //Handle inseting options here
+        optionArray.forEach((option) => {
+          let title = option.title;
+          let description = option.description;
+          knex('option')
+            .insert({title: title, description: description, poll_id: id});
+        });
+      });
+
+
     res.send("Succesful POST /polls with " + poll);
   });
 
