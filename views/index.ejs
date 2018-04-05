@@ -27,8 +27,8 @@
       <section class="home">
         <h1>Decider</h1>
         <form name="email">
-          <input name="email" placeholder="Enter email">
-          <button id="start">Get Started</button>
+          <input class="email" name="email" placeholder="Enter email">
+          <button id="start" type="submit">Get Started</button>
         </form>
       </section>
 
@@ -36,24 +36,25 @@
         <h1 class="greeting">Hello! email@email.email</h1>
         <h2 class="poll-header">Can't make up your mind?</h2>
         <form>
-          <textarea placeholder="What's your poll name?"></textarea>
-          <button type="submit">Next Step</button>
+          <textarea class="poll-title" placeholder="What's your poll name?"></textarea>
+          <button id="nextStep" type="submit">Next Step</button>
         </form>
       </section>
 
-      <section class="d-none">
+      <section class="poll-options-page d-none">
         <h1 class="poll-title">What movie should we see?</h1>
         <h2 class="options">Give me the options!</h2>
         <form>
-          <textarea placeholder="Option"></textarea>
-          <textarea placeholder="Description"></textarea>
-          <button>Enter Option</button>
-          <button id="delete">Delete</button>
-          <button class="createPoll" name= "createPoll" type="submit">Create Poll</button>
+          <textarea class="option" placeholder="Option"></textarea>
+          <textarea class= "description" placeholder="Description"></textarea>
+          <button id="enterOption">Enter Option</button>
+          <button id="createPoll" name= "createPoll" type="submit">Create Poll</button>
         </form>
+        <ul class="poll-options">
+        </ul>
       </section>
 
-      <section class="d-none">
+      <section class="created-poll-page d-none">
         <h1>Poll Created!</h1>
         <h2 class="poll-title">What movie should we see?</h2>
         <h4 id="share-poll">Share</h4>
