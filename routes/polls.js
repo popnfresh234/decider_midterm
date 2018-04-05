@@ -82,14 +82,18 @@ module.exports = (knex) => {
       .then((result) => {
         let email = result[0].email;
         mailgun(email);
-        console.log(email);
       });
 
-    let optionsArray = req.body;
-    console.log(typeof optionsArray);
+    let optionsArray = JSON.parse(req.body.options);
     optionsArray.forEach((option) => {
       console.log('OPTION ID: ', option.option_id);
       console.log('WEIGHT: ', option.weight);
+      knex('option')
+        .increment('rank', option.weight)
+        .where('id', option.option_id)
+        .then((err) => {
+          console.log(err);
+        });
     });
     res.send("Succesful PUT /polls/:id with id: " + id);
   });
