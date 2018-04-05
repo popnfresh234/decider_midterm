@@ -15,7 +15,8 @@ module.exports = (knex) => {
     console.log("/polls/:id: ", id);
     res.send("Succesful GET /:id with id: " + id);
     knex('poll')
-      .where('id', id)
+      .innerJoin('option', 'poll.id', '=', 'option.poll_id')
+      .where('poll.id', id)
       .then((results) => {
         console.log(results);
       });
@@ -34,12 +35,13 @@ module.exports = (knex) => {
   });
 
   router.post("/polls/", (req, res) => {
-    let poll = req.body.poll;
+    let poll = JSON.parse(req.body.poll);
     console.log("POST / ", poll);
     //Cet poll data form poll object
     let title = poll.title;
     let email = poll.email;
     let optionArray = poll.options;
+
 
     //Insert poll
     knex('poll')
@@ -52,11 +54,16 @@ module.exports = (knex) => {
         optionArray.forEach((option) => {
           let title = option.title;
           let description = option.description;
+          console.log("FOR EACH");
           knex('option')
-            .insert({title: title, description: description, poll_id: id});
+            .insert({title: title, description: description, poll_id: id[0]})
+            .then((err) => {
+              if (err) {
+                console.log(err);
+              }
+          });
         });
       });
-
 
     res.send("Succesful POST /polls with " + poll);
   });
