@@ -31,6 +31,7 @@ module.exports = (knex) => {
     knex('poll')
       .join('option', 'poll.id', '=', 'option.poll_id')
       .where('poll.id', id)
+      .orderBy('rank', 'desc')
       .then((results) => {
         console.log(results);
         let templateVars = {results: results};
