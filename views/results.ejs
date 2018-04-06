@@ -14,9 +14,10 @@
   <body>
     <section>
       <h1>The Results Are In!</h1>
-      <h2 class="poll-title"></h2>
 
-      <ul>
+      <h2 class= "poll-title"><%= results[2].ptitle %></h2>
+
+      <ul class= "poll-options">
         <% results.forEach(function(poll) { %>
           <li><p><%= poll.title %></p><p><%= poll.description %></li>
         <% }); %>
