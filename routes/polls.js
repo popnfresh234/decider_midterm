@@ -68,7 +68,6 @@ module.exports = (knex) => {
       });
    });
 
-
   router.put("/polls/:id", (req, res) => {
     let id = req.params.id;
 
