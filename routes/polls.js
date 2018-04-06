@@ -6,61 +6,48 @@ const mailgun = require('../mailgun.js');
 module.exports = (knex) => {
 
   router.get("/", (req, res) => {
-    console.log("GET /");
     res.render('index');
   });
 
   router.get("/polls/:id", (req, res)=> {
     let id = req.params.id;
-    console.log("/polls/:id: ", id);
-    //res.send("Succesful GET /:id with id: " + id);
     knex('poll')
     .innerJoin('option', 'poll.id', '=', 'option.poll_id')
     .where('poll.id', id)
     .then((results) => {
-      console.log(results);
-      let templateVars = {results: results};
-      res.render('poll', templateVars);
+      res.render('poll', {results});
     });
   });
 
   router.get("/polls/:id/links", (req, res) => {
     let id = req.params.id;
-    console.log("/polls:id/links: ", id);
-    let templateVars = {id: id};
-    res.render('links', templateVars);
+    res.render('links', {id});
   });
 
   router.get("/polls/:id/result", (req, res)=> {
     let id = req.params.id;
     console.log("/polls/:id/result: ", id);
-
     knex('poll')
     .join('option', 'poll.id', '=', 'option.poll_id')
     .where('poll.id', id)
     .orderBy('rank', 'desc')
     .then((results) => {
-      console.log(results);
-      let templateVars = {results: results};
-      res.render('results', templateVars);
+      res.render('results', {results});
     });
-
   });
 
   router.post("/polls/", (req, res) => {
     console.log(req.body);
     let poll = req.body;
-    console.log("POST / ", poll);
     //Cet poll data form poll object
     let title = poll.ptitle;
     let email = poll.email;
     let optionArray = poll.options;
-    console.log(optionArray);
 
     //Insert poll
     knex('poll')
     .returning('id')
-    .insert({ptitle: title, email: email})
+    .insert({ptitle: title, email})
     .then((id) =>  {
       console.log('Succesful insert, ID is: ' + id);
 
@@ -70,7 +57,7 @@ module.exports = (knex) => {
           let description = option.description;
           console.log("FOR EACH");
           knex('option')
-          .insert({title: title, description: description, poll_id: id[0]})
+          .insert({title, description, poll_id: id[0]})
           .then((err) => {
             if (err) {
               console.log(err);
@@ -80,6 +67,7 @@ module.exports = (knex) => {
         res.send({redirect: '/polls/' + id +'/links'});
       });
    });
+
 
   router.put("/polls/:id", (req, res) => {
     let id = req.params.id;
