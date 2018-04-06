@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('poll', function(table) {
       table.increments('id').primary();
-      table.string('title').notNull();
+      table.string('ptitle').notNull();
       table.string('email').notNull();
     }),
     knex.schema.createTable('option', function(table) {
