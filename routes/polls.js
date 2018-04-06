@@ -36,7 +36,6 @@ module.exports = (knex) => {
     console.log("/polls/:id/result: ", id);
 
     knex('poll')
-<<<<<<< HEAD
     .join('option', 'poll.id', '=', 'option.poll_id')
     .where('poll.id', id)
     .orderBy('rank', 'desc')
