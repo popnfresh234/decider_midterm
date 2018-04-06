@@ -10,23 +10,6 @@
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
-  <script
-  src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
-  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
-  crossorigin="anonymous"></script>
-  <script>
-    $( function() {
-      $( "#sortable" ).sortable({
-        revert: true
-      });
-      $( "#draggable" ).draggable({
-        connectToSortable: "#sortable",
-        helper: "clone",
-        revert: "invalid"
-      });
-      $( "ul, li" ).disableSelection();
-    } );
-  </script>
 </head>
 
 <body>
@@ -67,18 +50,9 @@
         <button id="enterOption">Enter Option</button>
         <button id="createPoll" name= "createPoll" type="submit">Create Poll</button>
       </form>
-      <ul id="sortable" class="poll-options" >
+      <ul class="poll-options" >
       </ul>
     </section>
-
-      <section class="created-poll-page d-none">
-        <h1>Poll Created!</h1>
-        <h2 class="poll-title">What movie should we see?</h2>
-        <h4 id="share-poll">Share</h4>
-        <a href="http://localhost:8080/polls/1">decider/movi</a>
-        <h4 id="poll-results">Results</h4>
-        <a href="#">decider/moviePollResults</a>
-      </section>
     </div>
 
 </body>

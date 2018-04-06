@@ -37,8 +37,10 @@ $(() => {
         method: 'POST',
         data: poll,
         dataType: 'json',
-        success: function() {
-
+        success: function(data) {
+          if (typeof data.redirect == 'string'){
+            window.location = data.redirect;
+          }
         }
       });
 
@@ -47,16 +49,16 @@ $(() => {
     });
 
     $('.createPoll').on('click',function(poll) {
-      $('.poll-container').append(poll.title)
+      $('.poll-container').append(poll.title);
       options.forEach(function(option) {
         $('.poll-container').append("<p id='optionTitle'>" + option.title + "</p>");
         $('.poll-container').append("<p id='optionDescription'>" + option.description + "</p>");
-      })
+      });
     });
 
     $('#enterOption').click(function(event) {
       event.preventDefault();
-      $('.poll-options').append('<li class="optionItem ui-state-default"><p class="optionTitle">' + $('.option').val() + '</p> <p class="description d-none">' + $('.description').val() + '</p><button class="delete">Delete</button></li>');
+      $('.poll-options').append('<li class="optionItem"><p class="optionTitle">' + $('.option').val() + '</p> <p class="description d-none">' + $('.description').val() + '</p><button class="delete">Delete</button></li>');
     });
 
     $('.poll-options-page').on('click', '.delete', (function(event){

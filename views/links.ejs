@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Decider</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/" style="height:100px">
+      <a class="navbar-brand p-0" href="/" target="_blank">
+        <span>Decider</span>
+      </a>
+    </a>
+  </nav>
+
+  <div class="mx-auto" style="width:50vh">
+    <section class="created-poll-page">
+      <h1>Poll Created!</h1>
+      <h2 class="poll-title">What movie should we see?</h2>
+      <h4 id="share-poll">Share</h4>
+      <a href="http://localhost:8080/polls/1">decider/movi/<%= id %></a>
+      <h4 id="poll-results">Results</h4>
+      <a href="#">decider/moviePollResults/<%=id %></a>
+    </section>
+  </div>
+
+</body>
+</html>
