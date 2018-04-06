@@ -1,9 +1,19 @@
 const express = require('express');
 const router  = express.Router();
 const mailgun = require('../mailgun.js');
+require('dotenv').config();
+
+
+//Twilio config
+const twilio = require('twilio');
+const accountSid = 'AC7b9844743f81862b10662b3d94596ab5';
+const authToken = '7489886f8680955b9485db6510d772b6';
 
 
 module.exports = (knex) => {
+
+  var client = new twilio(accountSid, authToken);
+
 
   router.get("/", (req, res) => {
     res.render('index');
@@ -49,11 +59,11 @@ module.exports = (knex) => {
     .returning('id')
     .insert({ptitle: title, email})
     .then((id) =>  {
-      console.log('Succesful insert, ID is: ' + id);
-
         //Handle inseting options here
-        optionArray.forEach((option) => {
+        let twilioMsg = title + " "; //Build twilio msg
+        optionArray.forEach((option, index) => {
           let title = option.title;
+          twilioMsg = twilioMsg + (index + 1) + " " + title + " ";
           let description = option.description;
           console.log("FOR EACH");
           knex('option')
@@ -63,6 +73,16 @@ module.exports = (knex) => {
               console.log(err);
             }
           });
+        });
+
+
+
+        client.messages.create({
+          body: twilioMsg,
+          to: '+16048896508',
+          from: process.env.TWILIO_NUMBER
+        }).then((message)=>{
+          console.log(message.sid);
         });
         res.send({redirect: '/polls/' + id +'/links'});
       });

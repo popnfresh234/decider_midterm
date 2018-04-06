@@ -72,11 +72,7 @@ $(() => {
       }))
       .on('mouseleave', '.optionItem', function() {
         $(this).find('.description').addClass('d-none');
-      })
-      ;
-
-
-
+      });
   });
 
 const poll = {
