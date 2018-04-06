@@ -87,4 +87,3 @@ const poll = {
 
 let options = poll.options;
 
-

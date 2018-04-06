@@ -2,28 +2,28 @@
 <html lang="en">
   <head>
     <title>Decider - Poll</title>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
+    <script type="text/javascript" src="/scripts/voting-page.js"></script>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
     <section>
-      <h1 class="poll-title">What movie should we see?</h1>
-      <h2 class="options">Give me the options!</h2>
-      <form>
-        <textarea placeholder="Option"></textarea>
-        <textarea placeholder="Description"></textarea>
-        <textarea placeholder="Option"></textarea>
-        <textarea placeholder="Description"></textarea>
-        <textarea placeholder="Option"></textarea>
-        <textarea placeholder="Description"></textarea>
-        <button type="submit">Submit Vote</button>
-      </form>
+      <h1 class="poll-title"><%= results.ptitle %></h1>
+      <h2>Rank the Options!</h2>
+      <ul class="options">
+        <% results.forEach(function(e) { %>
+          <li>
+            <p><%= e.ptitle %></p>
+            <p><%= e.description %></p>
+          </li>
+      <% }) %>
+      </ul>
     </section>
+    <button id="submitVote" type="submit">Submit</button>
   </body>
 </html>
