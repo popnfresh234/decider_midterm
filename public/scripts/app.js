@@ -32,6 +32,7 @@ $(() => {
       poll.options = optionArray;
       console.log(poll);
 
+
       $.ajax({
         url: '/polls',
         method: 'POST',
@@ -61,14 +62,18 @@ $(() => {
       $('.poll-options').append('<li class="optionItem"><p class="optionTitle">' + $('.option').val() + '</p> <p class="description d-none">' + $('.description').val() + '</p><button class="delete">Delete</button></li>');
     });
 
-    $('.poll-options-page').on('click', '.delete', (function(event){
-      event.preventDefault();
-      $(this).closest('li').remove();
-    }));
-
-    $('.poll-options-page').on('mouseenter', '.optionTitle', (function() {
-      $('.description').removeClass('d-none');
-    }));
+    $('.poll-options-page')
+      .on('click', '.delete', (function(event){
+        event.preventDefault();
+        $(this).closest('li').remove();
+      }))
+      .on('mouseenter', '.optionItem', (function() {
+        $(this).find('.description').removeClass('d-none');
+      }))
+      .on('mouseleave', '.optionItem', function() {
+        $(this).find('.description').addClass('d-none');
+      })
+      ;
 
 
 
