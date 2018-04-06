@@ -27,9 +27,11 @@ module.exports = (knex) => {
   router.get("/polls/:id/result", (req, res)=> {
     let id = req.params.id;
     console.log("/polls/:id/result: ", id);
+
     knex('poll')
       .join('option', 'poll.id', '=', 'option.poll_id')
       .where('poll.id', id)
+      .orderBy('rank', 'desc')
       .then((results) => {
         console.log(results);
         let templateVars = {results: results};
@@ -42,15 +44,15 @@ module.exports = (knex) => {
     let poll = req.body;
     console.log("POST / ", poll);
     //Cet poll data form poll object
-    let title = poll.title;
+    let title = poll.ptitle;
     let email = poll.email;
     let optionArray = poll.options;
-
+    console.log(optionArray);
 
     //Insert poll
     knex('poll')
       .returning('id')
-      .insert({title: title, email: email})
+      .insert({ptitle: title, email: email})
       .then((id) =>  {
         console.log('Succesful insert, ID is: ' + id);
 
@@ -81,14 +83,18 @@ module.exports = (knex) => {
       .then((result) => {
         let email = result[0].email;
         mailgun(email);
-        console.log(email);
       });
 
-    let optionsArray = req.body;
-    console.log(typeof optionsArray);
+    let optionsArray = JSON.parse(req.body.options);
     optionsArray.forEach((option) => {
       console.log('OPTION ID: ', option.option_id);
       console.log('WEIGHT: ', option.weight);
+      knex('option')
+        .increment('rank', option.weight)
+        .where('id', option.option_id)
+        .then((err) => {
+          console.log(err);
+        });
     });
     res.send("Succesful PUT /polls/:id with id: " + id);
   });

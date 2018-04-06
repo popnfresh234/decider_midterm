@@ -1,13 +1,16 @@
 $(() => {
+
+
+
   //Renders Poll Title Page
   $('#start').click(function(event){
-      event.preventDefault();
+    event.preventDefault();
     $('.home').addClass('d-none');
     $('.poll-title-page').removeClass('d-none');
   });
   //Renders Poll Options Page
-    $('#nextStep').click(function(event){
-      event.preventDefault();
+  $('#nextStep').click(function(event){
+    event.preventDefault();
     $('.poll-title-page').addClass('d-none');
     $('.poll-options-page').removeClass('d-none');
   });
@@ -23,36 +26,38 @@ $(() => {
         optionArray.push({title: $(this).find('.optionTitle').text(),
          description: $(this).find('.description').text()
        });
-    })
-    poll.title = pollTitle;
-    poll.email = email;
-    poll.options = optionArray;
-    console.log(poll);
+      })
+      poll.ptitle = pollTitle;
+      poll.email = email;
+      poll.options = optionArray;
+      console.log(poll);
 
-    $.ajax({
-      url: '/polls',
-      method: 'POST',
-      data: poll,
-      dataType: 'json',
-      success: function() {
-      }
+
+      $.ajax({
+        url: '/polls',
+        method: 'POST',
+        data: poll,
+        dataType: 'json',
+        success: function() {
+
+        }
+      });
+
+      $('.poll-options-page').hide();
+      $('.created-poll-page').removeClass('d-none');
     });
 
-    $('.poll-options-page').hide();
-    $('.created-poll-page').removeClass('d-none');
-  });
-
-  $('.createPoll').on('click',function(poll) {
-  $('.poll-container').append(poll.title)
-    options.forEach(function(option) {
-      $('.poll-container').append("<p id='optionTitle'>" + option.title + "</p>");
-      $('.poll-container').append("<p id='optionDescription'>" + option.description + "</p>");
-    })
-  });
+    $('.createPoll').on('click',function(poll) {
+      $('.poll-container').append(poll.title)
+      options.forEach(function(option) {
+        $('.poll-container').append("<p id='optionTitle'>" + option.title + "</p>");
+        $('.poll-container').append("<p id='optionDescription'>" + option.description + "</p>");
+      })
+    });
 
     $('#enterOption').click(function(event) {
       event.preventDefault();
-      $('.poll-options').append('<li class="optionItem"><p class="optionTitle">' + $('.option').val() + '</p> <p class="description d-none">' + $('.description').val() + '</p><button class="delete">Delete</button></li>');
+      $('.poll-options').append('<li class="optionItem ui-state-default"><p class="optionTitle">' + $('.option').val() + '</p> <p class="description d-none">' + $('.description').val() + '</p><button class="delete">Delete</button></li>');
     });
 
     $('.poll-options-page')
@@ -68,26 +73,28 @@ $(() => {
       })
       ;
 
-});
+
+
+  });
 
 const poll = {
 
-    "title": "What food?",
-    "email": "bob@bob.bob",
-    "options": [
-       { "title": "Cheeseburger",
-        "description": "Hot and cheesy",
-        "rank": 0
-        },
-        { "title": "Sushi",
-          "description": "Fresh and delicious",
-          "rank": 0
-        },
-        { "title": "Pasta",
-          "description": "Yummy",
-          "rank": 0
-      }]
-    };
+  "title": "What food?",
+  "email": "bob@bob.bob",
+  "options": [
+  { "title": "Cheeseburger",
+  "description": "Hot and cheesy",
+  "rank": 0
+},
+{ "title": "Sushi",
+"description": "Fresh and delicious",
+"rank": 0
+},
+{ "title": "Pasta",
+"description": "Yummy",
+"rank": 0
+}]
+};
 
 let options = poll.options;
 
