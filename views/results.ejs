@@ -3,6 +3,7 @@
   <head>
     <title>Decider - Results</title>
 
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -12,14 +13,21 @@
   </head>
 
   <body>
-    <section>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/" style="height:100px">
+        <a class="navbar-brand p-0" href="/" target="_blank">
+          <span>Decider</span>
+        </a>
+      </a>
+    </nav>
+
+ <div class="mx-auto" style="width:50vh">
       <h1>The Results Are In!</h1>
-
       <h2 class= "poll-title"><%= results[2].ptitle %></h2>
-
       <ul class= "poll-options">
         <% results.forEach(function(poll) { %>
-          <li><p><%= poll.title %></p><p><%= poll.description %></li>
+          <li><p class = "optionTitle"><%= poll.title %></p><p class = "d-none"><%= poll.description %></li>
         <% }); %>
       </ul>
 
@@ -31,7 +39,7 @@
         <textarea placeholder="Option"></textarea>
         <textarea placeholder="Description"></textarea>
       </form> -->
-    </section>
+    </div>
 
   </body>
 </html>

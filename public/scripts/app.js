@@ -14,15 +14,15 @@ $(() => {
     //Renders Created Poll Page
     $('#createPoll').click(function(event){
       event.preventDefault();
-    var poll = {};
-    var pollTitle = $('.poll-title').val();
-    var email = $('.email').val();
-    var optionArray = []
-    console.log(email);
-    $('li').each(function(index) {
-      optionArray.push({title: $(this).find('.optionTitle').text(),
-       description: $(this).find('.description').text()
-     });
+      var poll = {};
+      var pollTitle = $('.poll-title').val();
+      var email = $('.email').val();
+      var optionArray = []
+      console.log(email);
+      $('li').each(function(index) {
+        optionArray.push({title: $(this).find('.optionTitle').text(),
+         description: $(this).find('.description').text()
+       });
     })
     poll.title = pollTitle;
     poll.email = email;
@@ -55,14 +55,18 @@ $(() => {
       $('.poll-options').append('<li class="optionItem"><p class="optionTitle">' + $('.option').val() + '</p> <p class="description d-none">' + $('.description').val() + '</p><button class="delete">Delete</button></li>');
     });
 
-    $('.poll-options-page').on('click', '.delete', (function(event){
-      event.preventDefault();
-      $(this).closest('li').remove();
-    }));
-
-    $('.poll-options-page').on('mouseenter', '.optionTitle', (function() {
-      $('.description').removeClass('d-none');
-    }));
+    $('.poll-options-page')
+      .on('click', '.delete', (function(event){
+        event.preventDefault();
+        $(this).closest('li').remove();
+      }))
+      .on('mouseenter', '.optionItem', (function() {
+        $(this).find('.description').removeClass('d-none');
+      }))
+      .on('mouseleave', '.optionItem', function() {
+        $(this).find('.description').addClass('d-none');
+      })
+      ;
 
 });
 

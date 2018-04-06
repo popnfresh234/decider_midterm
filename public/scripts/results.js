@@ -1,3 +1,4 @@
 $(() => {
+  $('.poll-options').on('mouseenter'
 
 });
