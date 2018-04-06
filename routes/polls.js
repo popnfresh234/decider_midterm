@@ -35,6 +35,7 @@ module.exports = (knex) => {
       .then((results) => {
         console.log(results);
         let templateVars = {results: results};
+
         res.render('results', templateVars);
       });
   });
