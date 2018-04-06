@@ -85,7 +85,7 @@ module.exports = (knex) => {
         console.log(email);
       });
 
-    let optionsArray = req.body;
+    let optionsArray = req.body; //important array of objects
     console.log(typeof optionsArray);
     optionsArray.forEach((option) => {
       console.log('OPTION ID: ', option.option_id);

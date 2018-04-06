@@ -7,23 +7,35 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <script type="text/javascript" src="/scripts/voting-page.js"></script>
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/voting-page.js"></script>
+     <script
+    src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+    integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+    crossorigin="anonymous"></script>
+    <script>
+    $( function() {
+      $( "#sortable" ).sortable();
+      $( "#sortable" ).disableSelection();
+    } );
+    </script>
   </head>
 
   <body>
-    <section>
-      <h1 class="poll-title"><%= results.ptitle %></h1>
-      <h2>Rank the Options!</h2>
-      <ul class="options">
+    <div class="mx-auto text-center" style="width:50vh">
+      <h1 class="poll-title"><%= results[0].ptitle %></h1>
+      <h2 data-pollid="<%= results[0].id %>">Rank the Options!</h2>
+      <ul class="options" id="sortable">
         <% results.forEach(function(e) { %>
-          <li>
-            <p><%= e.ptitle %></p>
-            <p><%= e.description %></p>
+          <li class="ui-state-default singleOption" data-id="<%= e.id %>" data-rank="<%= e.rank %>">
+            <p><%= e.title %></p>
+            <p class="desc d-none"><%= e.description %></p>
           </li>
       <% }) %>
       </ul>
-    </section>
-    <button id="submitVote" type="submit">Submit</button>
+    </div>
+    <form method="PUT" action="/polls/1" class="mx-auto text-center" style="width:50vh">
+      <button id="submitVote" type="submit" action=>Submit</button>
+    </form>
   </body>
 </html>
