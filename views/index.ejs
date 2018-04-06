@@ -7,34 +7,45 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- jQuery Flash CSS-->
+  <link rel="stylesheet" href="/styles/jquery.flash.css"></link>
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <!-- jQuery Flash JS-->
+  <script type="text/javascript" src="scripts/jquery.flash.js"></script>
+
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/" style="height:100px">
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">
       <a class="navbar-brand p-0" href="/" target="_blank">
         <span>Decider</span>
       </a>
     </a>
   </nav>
 
-  <div class="mx-auto" style="width:50vh">
-
+  <div class="jumbotron-fluid mx-auto">
     <section class="home">
-      <h1>Decider</h1>
-      <form name="email">
-        <input class="email" name="email" placeholder="Enter email">
-        <button id="start" type="submit">Get Started</button>
-      </form>
+      <div class="container-fluid">
+        <h1 id="main-header">Welcome to Decider</h1>
+        <form id="email-form" name="email">
+          <fieldset>
+            <legend>Start creating a poll</legend>
+              <label for="email">E-mail:</label><input class="form-control form-control-lg email" name="email" placeholder="Enter email...">
+              <button id="start" type="submit">Get Started</button>
+          </fieldset>
+        </form>
+      </div>
     </section>
 
     <section class="poll-title-page d-none">
-      <h1 class="greeting">Hello! email@email.email</h1>
-      <h2 class="poll-header">Can't make up your mind?</h2>
+      <h2 class="poll-header">Name your poll and let us help you make a decision</h2>
       <form>
         <textarea class="poll-title" placeholder="What's your poll name?"></textarea>
         <button id="nextStep" type="submit">Next Step</button>

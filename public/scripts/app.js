@@ -1,25 +1,40 @@
 $(() => {
-
-
-
   //Renders Poll Title Page
   $('#start').click(function(event){
     event.preventDefault();
-    $('.home').addClass('d-none');
-    $('.poll-title-page').removeClass('d-none');
+    var email = $('.email').val();
+    if (email === '') {
+      $.flash('Please enter an email.');
+    } else {
+      poll.email = email;
+      $('.home').addClass('d-none');
+      $('.poll-title-page').removeClass('d-none');
+    }
   });
   //Renders Poll Options Page
   $('#nextStep').click(function(event){
     event.preventDefault();
+    var pollTitle = $('.poll-title').val();
+    if (pollTitle === '') {
+      $.flash('Please enter a poll title.')
+    } else {
+    poll.ptitle = pollTitle;
     $('.poll-title-page').addClass('d-none');
     $('.poll-options-page').removeClass('d-none');
+    }
   });
+
+    // $('#enterOption').click(function(event) {
+    //   event.preventDefault();
+    //   var optionTitle = $('.option').val();
+    //   if(optionTitle === '') {
+    //     $.flash('Please enter an option title.')
+    //   }
+    // })
     //Renders Created Poll Page
     $('#createPoll').click(function(event){
       event.preventDefault();
       var poll = {};
-      var pollTitle = $('.poll-title').val();
-      var email = $('.email').val();
       var optionArray = []
       console.log(email);
       $('li').each(function(index) {
@@ -27,11 +42,8 @@ $(() => {
          description: $(this).find('.description').text()
        });
       })
-      poll.ptitle = pollTitle;
-      poll.email = email;
       poll.options = optionArray;
       console.log(poll);
-
 
       $.ajax({
         url: '/polls',
@@ -59,7 +71,12 @@ $(() => {
 
     $('#enterOption').click(function(event) {
       event.preventDefault();
+      var optionTitle = $('.option').val();
+      if (optionTitle === '') {
+        $.flash('Please enter an option title.')
+      }else {
       $('.poll-options').append('<li class="optionItem"><p class="optionTitle">' + $('.option').val() + '</p> <p class="description d-none">' + $('.description').val() + '</p><button class="delete">Delete</button></li>');
+      }
     });
 
     $('.poll-options-page')
