@@ -1,7 +1,36 @@
+/* NAVBAR STYLES */
+.navbar {
+  background-color: #91B1EB;
+  height: 100px;
+}
+
+span {
+  color: #F3D13F;
+  font-size: 34px;
+}
+
 body {
   background-color: #EEE;
-
-  h1 {
-    color: #244751;
-  }
 }
+/* HOMEPAGE SECTION */
+
+.jumbotron-fluid {
+  background-color: #506CA9;
+  height: 100vh;
+ /* width: auto;*/
+}
+
+fieldset {
+  background-color: #F5F9FA;
+}
+
+h1 {
+    color: #244751;
+    margin: 0px;
+  }
+
+/*    h1#main-header {
+    font-size: 20px;
+
+  }*/
+
