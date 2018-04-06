@@ -2,11 +2,10 @@ $(() => {
   //Renders Poll Title Page
   $('#start').click(function(event){
     event.preventDefault();
-    var email = $('.email').val();
-    if (email === '') {
+    if ($('.email').val() === '') {
       $.flash('Please enter an email.');
     } else {
-      poll.email = email;
+
       $('.home').addClass('d-none');
       $('.poll-title-page').removeClass('d-none');
     }
@@ -14,11 +13,10 @@ $(() => {
   //Renders Poll Options Page
   $('#nextStep').click(function(event){
     event.preventDefault();
-    var pollTitle = $('.poll-title').val();
-    if (pollTitle === '') {
+    if ($('.poll-title').val() === '') {
       $.flash('Please enter a poll title.')
     } else {
-    poll.ptitle = pollTitle;
+
     $('.poll-title-page').addClass('d-none');
     $('.poll-options-page').removeClass('d-none');
     }
@@ -34,14 +32,20 @@ $(() => {
     //Renders Created Poll Page
     $('#createPoll').click(function(event){
       event.preventDefault();
+
+      var email = $('.email').val();
+      var pollTitle = $('.poll-title').val();
+
       var poll = {};
-      var optionArray = []
+      poll.email = email;
+      poll.ptitle = pollTitle;
+      var optionArray = [];
       console.log(email);
       $('li').each(function(index) {
         optionArray.push({title: $(this).find('.optionTitle').text(),
          description: $(this).find('.description').text()
        });
-      })
+      });
       poll.options = optionArray;
       console.log(poll);
 
@@ -58,7 +62,7 @@ $(() => {
       });
 
       $('.poll-options-page').hide();
-      $('.created-poll-page').removeClass('d-none');
+
     });
 
     $('.createPoll').on('click',function(poll) {
