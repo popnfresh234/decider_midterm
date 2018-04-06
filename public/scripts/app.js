@@ -35,7 +35,6 @@ $(() => {
       data: poll,
       dataType: 'json',
       success: function() {
-
       }
     });
 

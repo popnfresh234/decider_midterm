@@ -8,21 +8,28 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/results.js"></script>
   </head>
 
   <body>
     <section>
-      <h1>The Results Are In</h1>
-      <h2 class="poll-title">What movie should we see?</h2>
-      <form>
+      <h1>The Results Are In!</h1>
+      <h2 class="poll-title"></h2>
+
+      <ul>
+        <% results.forEach(function(poll) { %>
+          <li><p><%= poll.title %></p><p><%= poll.description %></li>
+        <% }); %>
+      </ul>
+
+<!--       <form>
         <textarea placeholder="Option"></textarea>
         <textarea placeholder="Description"></textarea>
         <textarea placeholder="Option"></textarea>
         <textarea placeholder="Description"></textarea>
         <textarea placeholder="Option"></textarea>
         <textarea placeholder="Description"></textarea>
-      </form>
+      </form> -->
     </section>
 
   </body>
