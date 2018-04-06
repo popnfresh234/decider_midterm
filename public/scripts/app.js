@@ -27,7 +27,7 @@ $(() => {
          description: $(this).find('.description').text()
        });
       })
-      poll.title = pollTitle;
+      poll.ptitle = pollTitle;
       poll.email = email;
       poll.options = optionArray;
       console.log(poll);
