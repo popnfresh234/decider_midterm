@@ -61,8 +61,7 @@
     </section>
 
     <section class="home poll-options-page d-none container-fluid">
-      <h1 class="main-header">What movie should we see?</h1>
-     <!--  <h2 class="options">Give me the options!</h2> -->
+      <h1 class="main-header"></h1>
       <form>
         <fieldset id="option-fieldset">
           <div class="option-box container-fluid">
@@ -75,16 +74,17 @@
           <button class="optionBtn btn-primary" id="createPoll" name= "createPoll" type="submit">Create Poll</button>
         </fieldset>
       </form>
-
     </section>
 
     <section class="phone-number home poll-phone-page d-none container-fluid">
-      <h1 class="main-header poll-title">What movie should we see?</h1>
+      <h1 class="main-header poll-title"></h1>
       <h2 class="options">Send the poll to your friends</h2>
       <form>
-        <textarea class="textarea-phone-number" placeholder="Enter phone number..."></textarea>
-        <button class="myButton btn-primary" id="enterPhoneNumber">Enter Phone Number</button>
-        <button class="myButton btn-primary" id="submitPoll" type="submit">Submit Poll</button>
+        <fieldset id="option-fieldset">
+          <textarea class="textarea-phone-number" placeholder="Enter phone number..."></textarea>
+          <button class="myButton btn-primary" id="enterPhoneNumber">Enter Phone Number</button>
+          <button class="myButton btn-primary" id="submitPoll" type="submit">Submit Poll</button>
+        </fieldset>
       </form>
       <ul class="poll-phone-list" >
       </ul>
