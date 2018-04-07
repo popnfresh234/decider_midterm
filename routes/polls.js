@@ -20,6 +20,13 @@ module.exports = (knex) => {
     res.render('index');
   });
 
+
+
+  //*********************************************
+  //*** GET polls/:id/ ***
+  //*********************************************
+
+
   router.get("/polls/:id", (req, res)=> {
     let id = req.params.id;
     knex('poll')
@@ -30,9 +37,13 @@ module.exports = (knex) => {
     });
   });
 
+
+  //*********************************************
+  //*** GET polls/:id/links ***
+  //*********************************************
+
   router.get("/polls/:id/links", (req, res) => {
     let id = req.params.id;
-    //Send out SMS alerts
     knex('phone')
     .where('poll_id', id)
     .then((results) => {
@@ -57,6 +68,11 @@ module.exports = (knex) => {
     res.render('links', {id});
   });
 
+  //*********************************************
+  //*** GET /polls/:id/result ***
+  //*********************************************
+
+
   router.get("/polls/:id/result", (req, res)=> {
     let id = req.params.id;
     knex('poll')
@@ -68,6 +84,12 @@ module.exports = (knex) => {
       res.render('results', {results});
     });
   });
+
+
+  //*********************************************
+  //*** POST /polls/ ***
+  //*********************************************
+
 
   router.post("/polls/", (req, res) => {
     let poll = req.body;
@@ -106,6 +128,11 @@ module.exports = (knex) => {
         res.send({redirect: '/polls/' + id +'/links'});
       });
   });
+
+
+  //*********************************************
+  //*** PUT/ polls/:id ***
+  //*********************************************
 
   router.put("/polls/:id", (req, res) => {
     let id = req.params.id;
