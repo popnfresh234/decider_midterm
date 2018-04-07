@@ -1,7 +1,16 @@
+/*VARIABLE*/
+$body-bg: #91B1EB;
+$body-color: #F5F9FA;
+$theme-colors: (
+  "primary": #F3D13F
+  );
+/*$btn-primary:*/
+
 /* NAVBAR STYLES */
 .navbar {
   background-color: #91B1EB;
   height: 100px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 span {
@@ -9,24 +18,59 @@ span {
   font-size: 34px;
 }
 
+#main-header {
+  color: #244751;
+  margin: 0px;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 3%
+/*  font-size: px;*/
+}
 body {
   background-color: #EEE;
 }
 /* HOMEPAGE SECTION */
 
+.home {
+  width: 82%;
+  margin: 7%;
+  text-align: -webkit-center;
+}
+
 .jumbotron-fluid {
-  background-color: #506CA9;
+  background-image: url('../img/bg-img.jpg');
   height: 100vh;
+  display: flex;
+  justify-content: center;
  /* width: auto;*/
 }
 
 fieldset {
+  border-radius: 25px;
   background-color: #F5F9FA;
+  width: 70%;
+  height: 66vh;
+  padding-top: 8%;
 }
 
-h1 {
-    color: #244751;
-    margin: 0px;
-  }
+.email {
+  margin: 11% 20px 20px 20px;
+  width: 85%;
+  height: 14vh;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-size: 30px;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 15px;
+}
+
+#start {
+  height: 15%;
+  border-radius: 15px;
+  margin-top: 4%;
+}
 
 @import "node_modules/bootstrap/scss/bootstrap";

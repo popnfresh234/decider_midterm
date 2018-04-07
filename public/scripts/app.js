@@ -2,6 +2,7 @@ $(() => {
   //Renders Poll Title Page
   $('#start').click(function(event){
     event.preventDefault();
+
     if ($('.email').val() === '') {
       $.flash('Please enter an email.');
     } else {
@@ -22,13 +23,6 @@ $(() => {
     }
   });
 
-    // $('#enterOption').click(function(event) {
-    //   event.preventDefault();
-    //   var optionTitle = $('.option').val();
-    //   if(optionTitle === '') {
-    //     $.flash('Please enter an option title.')
-    //   }
-    // })
     //Renders Created Poll Page
     $('#createPoll').click(function(event){
       event.preventDefault();
