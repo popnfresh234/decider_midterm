@@ -2,6 +2,7 @@ $(() => {
   //Renders Poll Title Page
   $('#start').click(function(event){
     event.preventDefault();
+    console.log("TEST")
     var email = $('.email').val();
     if (email === '') {
       $.flash('Please enter an email.');
