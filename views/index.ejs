@@ -3,7 +3,7 @@
 <head>
   <title>Decider</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Asap+Condensed|Montserrat" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Asap+Condensed|Montserrat:400,800|Gugi" rel="stylesheet">
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -16,6 +16,9 @@
   <!-- jQuery Flash JS-->
   <script type="text/javascript" src="scripts/jquery.flash.js"></script>
 
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+
+
   <script type="text/javascript" src="/scripts/app.js"></script>
 
 </head>
@@ -26,6 +29,7 @@
     <nav class="nav">
       <a class="navbar-brand" href="/">
         <a class="navbar-brand p-0" href="/" target="_blank">
+          <i class="owl fab fa-earlybirds"></i>
           <span>Decider</span>
         </a>
       </a>
@@ -37,7 +41,7 @@
         <form id="email-form" name="email">
           <fieldset>
               <input class="email" name="email" placeholder="Enter email...">
-              <button class="btn btn-primary" id="start" type="submit">Get Started</button>
+              <button class="myButton btn btn-primary" id="start" type="submit">Get Started</button>
           </fieldset>
         </form>
       </div>
@@ -49,26 +53,26 @@
         <form>
           <fieldset>
             <textarea class="poll-title" placeholder="What's your poll name?"></textarea>
-            <button id="nextStep" type="submit">Next Step</button>
+            <button class="myButton btn-primary" id="nextStep" type="submit">Next Step</button>
           </fieldset>
         </form>
       </div>
     </section>
 
-    <section class="poll-options-page d-none">
+    <section class="poll-options-page d-none container-fluid">
       <h1 class="poll-title">What movie should we see?</h1>
       <h2 class="options">Give me the options!</h2>
       <form>
         <textarea class="option" placeholder="Option"></textarea>
         <textarea class= "description" placeholder="Description"></textarea>
-        <button id="enterOption">Enter Option</button>
-        <button id="createPoll" name= "createPoll" type="submit">Create Poll</button>
+        <button class="myButton btn-primary" id="enterOption">Enter Option</button>
+        <button class="myButton btn-primary" id="createPoll" name= "createPoll" type="submit">Create Poll</button>
       </form>
       <ul class="poll-options" >
       </ul>
     </section>
 
-    <section class="created-poll-page d-none">
+    <section class="created-poll-page d-none container-fluid">
       <h1>Poll Created!</h1>
       <h2 class="poll-title">What movie should we see?</h2>
       <h4 id="share-poll">Share</h4>

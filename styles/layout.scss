@@ -8,25 +8,32 @@ $font-family-base: 'Asap Condensed', sans-serif;
 /*$btn-primary:*/
 
 /* NAVBAR STYLES */
+.owl {
+
+}
+
 .nav {
   background-color: #C8B3C2;
   height: 100px;
   font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
   position: fixed;
+  padding-top: 24px;
+  padding-left: 20px;
   top: 0;
   left: 0;
   width: 100%;
 }
 
 span {
-  color: #F3D13F;
+  color: #244751;
   font-size: 34px;
 }
 
 #main-header {
   color: #244751;
   margin: 0px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', cursive;
   margin-bottom: 3%
 /*  font-size: px;*/
 }
@@ -54,7 +61,7 @@ fieldset {
   background-color: #F5F9FA;
   width: 70%;
   height: 66vh;
-  padding-top: 8%;
+/*  padding-top: 8%;*/
   opacity: 0.9;
 }
 
@@ -73,13 +80,13 @@ fieldset {
   border-radius: 15px;
 }
 
-#start {
+.myButton {
   height: 15%;
+  width: 30%;
   border-radius: 15px;
   margin-top: 4%;
-}
-
-
+/*  font-size: px;
+*/}
 /* POLL TITLE PAGE*/
 
 .poll-title-page {
@@ -103,6 +110,11 @@ fieldset {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 15px;
+}
+
+/* POLL OPTIONS PAGE */
+.delete {
+/*  background-color: ##dc3545;*/
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";
