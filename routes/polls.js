@@ -93,7 +93,7 @@ module.exports = (knex) => {
 
   router.put("/polls/:id", (req, res) => {
     let id = req.params.id;
-    console.log(req.body);
+    console.log('THIS IS A PUT', req.body);
     knex('poll')
     .select('email')
     .where('id', id)
