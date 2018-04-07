@@ -56,6 +56,7 @@ $(function() {
     }
   });
 
+
   //Renders the phone number page
   $('#createPoll').click(function(event){
     event.preventDefault();
@@ -70,12 +71,12 @@ $(function() {
     event.preventDefault();
     $(this).closest('li').remove();
   }))
-  .on('mouseenter', '.optionItem', (function() {
-    $(this).find('.description').removeClass('d-none');
-  }))
-  .on('mouseleave', '.optionItem', function() {
-    $(this).find('.description').addClass('d-none');
-  });
+  // .on('mouseenter', '.optionItem', (function() {
+  //   $(this).find('.description').removeClass('d-none');
+  // }))
+  // .on('mouseleave', '.optionItem', function() {
+  //   $(this).find('.description').addClass('d-none');
+  // });
 
   //Handles adding options
   $('#enterOption').click(function(event) {
@@ -84,9 +85,10 @@ $(function() {
     if (optionTitle === '') {
       $.flash('Please enter an option title.');
     }else {
-    $('.poll-options').append('<li class="optionItem"><p class="optionTitle">' + optionTitle + '</p><p class="description d-none">' + $('.description').val() + '</p><button class="myButton delete">Delete</button></li>');
+    $('.poll-options').append('<li class="optionItem option-box"><p class="opTitle">' + $('.option').val() + '&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp' + $('.description').val() + '</p><button class="myButton delete">Delete</button></li>');
     }
   });
+
 
   //Handles adding phone numbers
   $('#enterPhoneNumber').click(function(event) {
