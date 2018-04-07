@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "bootstrap": "^4.0.0",
     "dotenv": "^2.0.0",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
@@ -20,12 +21,14 @@
     "knex-logger": "^0.1.0",
     "mailgun-js": "^0.16.0",
     "morgan": "^1.7.0",
+    "node-sass": "^4.8.3",
     "node-sass-middleware": "^0.9.8",
     "pg": "^6.0.2",
     "twilio": "^3.14.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.3",
+    "sass-watch": "^0.1.0",
     "sqlite3": "^3.1.4"
   }
 }

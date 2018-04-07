@@ -36,7 +36,6 @@ module.exports = (knex) => {
 
   router.get("/polls/:id/result", (req, res)=> {
     let id = req.params.id;
-    console.log("/polls/:id/result: ", id);
     knex('poll')
     .join('option', 'poll.id', '=', 'option.poll_id')
     .where('poll.id', id)
@@ -47,13 +46,11 @@ module.exports = (knex) => {
   });
 
   router.post("/polls/", (req, res) => {
-    console.log(req.body);
     let poll = req.body;
     //Cet poll data form poll object
     let title = poll.ptitle;
     let email = poll.email;
     let optionArray = poll.options;
-
     //Insert poll
     knex('poll')
     .returning('id')
@@ -65,7 +62,6 @@ module.exports = (knex) => {
           let title = option.title;
           twilioMsg = twilioMsg + (index + 1) + " " + title + " ";
           let description = option.description;
-          console.log("FOR EACH");
           knex('option')
           .insert({title, description, poll_id: id[0]})
           .then((err) => {
@@ -86,32 +82,29 @@ module.exports = (knex) => {
         });
         res.send({redirect: '/polls/' + id +'/links'});
       });
-   });
-
+  });
 
   router.put("/polls/:id", (req, res) => {
     let id = req.params.id;
-
+    console.log(req.body);
     knex('poll')
     .select('email')
     .where('id', id)
     .then((result) => {
       let email = result[0].email;
-      mailgun(email);
+      mailgun(email, id);
     });
 
-    let optionsArray = JSON.parse(req.body.options);
+    let optionsArray = req.body.data;
     optionsArray.forEach((option) => {
-      console.log('OPTION ID: ', option.option_id);
-      console.log('WEIGHT: ', option.weight);
       knex('option')
-      .increment('rank', option.weight)
+      .increment('rank', option.rank)
       .where('id', option.option_id)
       .then((err) => {
         console.log(err);
       });
     });
-    res.send("Succesful PUT /polls/:id with id: " + id);
+    res.send({redirect: '/'});
   });
   return router;
 };

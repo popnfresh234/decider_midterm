@@ -1,37 +1,47 @@
 $(() => {
-
-
-
   //Renders Poll Title Page
   $('#start').click(function(event){
     event.preventDefault();
-    $('.home').addClass('d-none');
-    $('.poll-title-page').removeClass('d-none');
+
+    if ($('.email').val() === '') {
+      $.flash('Please enter an email.');
+    } else {
+
+      $('.home').addClass('d-none');
+      $('.poll-title-page').removeClass('d-none');
+    }
   });
   //Renders Poll Options Page
   $('#nextStep').click(function(event){
     event.preventDefault();
+    if ($('.poll-title').val() === '') {
+      $.flash('Please enter a poll title.')
+    } else {
+
     $('.poll-title-page').addClass('d-none');
     $('.poll-options-page').removeClass('d-none');
+    }
   });
+
     //Renders Created Poll Page
     $('#createPoll').click(function(event){
       event.preventDefault();
-      var poll = {};
-      var pollTitle = $('.poll-title').val();
+
       var email = $('.email').val();
-      var optionArray = []
+      var pollTitle = $('.poll-title').val();
+
+      var poll = {};
+      poll.email = email;
+      poll.ptitle = pollTitle;
+      var optionArray = [];
       console.log(email);
       $('li').each(function(index) {
         optionArray.push({title: $(this).find('.optionTitle').text(),
          description: $(this).find('.description').text()
        });
-      })
-      poll.ptitle = pollTitle;
-      poll.email = email;
+      });
       poll.options = optionArray;
       console.log(poll);
-
 
       $.ajax({
         url: '/polls',
@@ -46,7 +56,7 @@ $(() => {
       });
 
       $('.poll-options-page').hide();
-      $('.created-poll-page').removeClass('d-none');
+
     });
 
     $('.createPoll').on('click',function(poll) {
@@ -59,7 +69,12 @@ $(() => {
 
     $('#enterOption').click(function(event) {
       event.preventDefault();
+      var optionTitle = $('.option').val();
+      if (optionTitle === '') {
+        $.flash('Please enter an option title.')
+      }else {
       $('.poll-options').append('<li class="optionItem"><p class="optionTitle">' + $('.option').val() + '</p> <p class="description d-none">' + $('.description').val() + '</p><button class="delete">Delete</button></li>');
+      }
     });
 
     $('.poll-options-page')
@@ -72,27 +87,13 @@ $(() => {
       }))
       .on('mouseleave', '.optionItem', function() {
         $(this).find('.description').addClass('d-none');
+<<<<<<< HEAD
       });
+=======
+      })
+      ;
+>>>>>>> master
   });
-
-const poll = {
-
-  "title": "What food?",
-  "email": "bob@bob.bob",
-  "options": [
-  { "title": "Cheeseburger",
-  "description": "Hot and cheesy",
-  "rank": 0
-},
-{ "title": "Sushi",
-"description": "Fresh and delicious",
-"rank": 0
-},
-{ "title": "Pasta",
-"description": "Yummy",
-"rank": 0
-}]
-};
 
 let options = poll.options;
 
