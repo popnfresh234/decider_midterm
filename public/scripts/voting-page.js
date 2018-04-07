@@ -1,20 +1,6 @@
-$(() => {
-  //loop over object push into array
-  $('#submitVote').click(function(event) {
-    event.preventDefault();
-    var length = $('li').length;
-    console.log("LENGTH", length);
-    let objectArray = [];
-    $('li').each(function(index, value) {
-      let singleOption = {};
-      let id = ($(value).data('id'));
-      let rank = length - index;
-      singleOption.option_id = id;
-      singleOption.rank = rank;
-      objectArray.push(singleOption);
-    });
+$(function() {
 
-    console.log(objectArray);
+  function ajaxVote(objectArray){
     $.ajax({
       url: '/polls/' + $('h2').data('pollid'),
       method: 'PUT',
@@ -26,6 +12,19 @@ $(() => {
         }
       }
     });
+  }
+  //loop over object push into array
+  $('#submitVote').click(function(event) {
+    event.preventDefault();
+    var length = $('li').length;
+    let objectArray = [];
+    $('li').each(function(index, value) {
+      let option = {};
+      option.option_id = $(value).data('id');
+      option.rank = length - index;
+      objectArray.push(option);
+    });
+    ajaxVote(objectArray);
   });
 
   $('.singleOption').on('mouseenter', (function() {
