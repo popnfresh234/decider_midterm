@@ -15,6 +15,7 @@ const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
 // Seperated Routes for each Resource
+const indexRoute = require("./routes/index");
 const pollRoutes = require("./routes/polls");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -37,7 +38,9 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/", pollRoutes(knex));
+app.use("/", indexRoute());
+
+app.use("/polls", pollRoutes(knex));
 
 // Home page
 // app.get("/", (req, res) => {
