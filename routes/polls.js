@@ -36,21 +36,23 @@ module.exports = (knex) => {
     knex('phone')
     .where('poll_id', id)
     .then((results) => {
+
         //Loop over phone numbers and send out SMS
-        results.forEach((phoneNumber) => {
+         results.forEach((result) => {
 
-          let parsedNumber = new PhoneNumber( phoneNumber, 'US' );
-          console.log(parsedNumber);
-          console.log(parsedNumber.isValid());
+          let parsedNumber = new PhoneNumber( result.number, 'US' );
 
-          client.messages.create({
-            body: 'http://192.168.0.14:8080/polls/1',
-            to: parsedNumber.getNumber('e164'),
-            from: process.env.TWILIO_NUMBER
-          }).then((message)=>{
-            console.log(message.sid);
-          });
-        });
+          //DISABLED FOR THE MOMENT, TURN ON FOR PRESENTATION
+          // client.messages.create({
+          //   body: 'Help make a decison!  Vote at http://10.30.30.23:8080/polls/' + id,
+          //   to: parsedNumber.getNumber('e164'),
+          //   from: process.env.TWILIO_NUMBER
+          // }).then((message)=>{
+          //   console.log('MESSAGE ID: ', message.sid);
+          // }).catch((err) => {
+          //   console.log("ERROR", err);
+          // });
+         });
       });
     res.render('links', {id});
   });
@@ -74,6 +76,7 @@ module.exports = (knex) => {
     let email = poll.email;
     let optionArray = poll.options;
     let phoneNumberArray = poll.phoneNumbers;
+
     //Insert poll
     knex('poll')
     .returning('id')
@@ -91,6 +94,15 @@ module.exports = (knex) => {
             }
           });
         });
+
+        phoneNumberArray.forEach((number) => {
+          knex('phone')
+          .insert({number, poll_id: id[0]})
+          .then((err) => {
+            console.log(err);
+          });
+        });
+
         res.send({redirect: '/polls/' + id +'/links'});
       });
   });

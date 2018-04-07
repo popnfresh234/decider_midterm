@@ -27,7 +27,7 @@ $(() => {
   function buildPhoneNumberArray(){
     var phoneArray = [];
     $('.phoneItem').each(function(){
-      phoneArray.push({number: $(this).find('.phoneNumber').text()});
+      phoneArray.push($(this).find('.phoneNumber').text());
     });
     return phoneArray;
   }

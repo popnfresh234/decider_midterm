@@ -13,12 +13,12 @@ exports.up = function(knex, Promise) {
       table.integer('rank').defaultTo(0);
       table.integer('poll_id').references('id').inTable('poll');
     }),
-  ])
+  ]);
 };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
     knex.schema.dropTable('option'),
     knex.schema.dropTable('poll'),
-  ])
+  ]);
 };

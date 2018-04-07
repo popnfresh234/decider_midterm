@@ -6,12 +6,12 @@ exports.up = function(knex, Promise) {
       table.text('number').notNull();
       table.integer('poll_id').references('id').inTable('poll');
     }),
-  ])
+  ]);
 };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
     knex.schema.dropTable('phone'),
-  ])
+  ]);
 };
 
