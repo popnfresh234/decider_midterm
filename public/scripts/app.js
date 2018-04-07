@@ -41,7 +41,7 @@ $(() => {
   $('#nextStep').click(function(event){
     event.preventDefault();
     if ($('.poll-title').val() === '') {
-      $.flash('Please enter a poll title.')
+      $.flash('Please enter a poll title.');
     } else {
 
       $('.poll-title-page').addClass('d-none');
@@ -62,18 +62,15 @@ $(() => {
       poll.email = email;
       poll.ptitle = pollTitle;
       poll.options = buildOptionArray();
-
-      makeAjaxPush(poll);
-
       $('.poll-options-page').hide();
 
-      var optionArray = []
+      var optionArray = [];
       console.log(email);
       $('li').each(function(index) {
         optionArray.push({title: $(this).find('.optionTitle').text(),
         description: $(this).find('.description').text()
        });
-      })
+      });
       poll.options = optionArray;
       console.log(poll);
 
@@ -98,7 +95,7 @@ $(() => {
       event.preventDefault();
       var optionTitle = $('.option').val();
       if (optionTitle === '') {
-        $.flash('Please enter an option title.')
+        $.flash('Please enter an option title.');
       }else {
       $('.poll-options').append('<li class="optionItem"><p class="optionTitle">' + $('.option').val() + '</p><p class="description d-none">' + $('.description').val() + '</p><button class="myButton delete">Delete</button></li>');
       }
@@ -110,9 +107,9 @@ $(() => {
       event.preventDefault();
       var phoneNumber = $('.textarea-phone-number').val();
       if (phoneNumber === '') {
-        $.flash('Please enter a phone number.')
+        $.flash('Please enter a phone number.');
       }else {
-      $('.poll-phone-list').append('<li class="optionItem"><p class="optionTitle">' + $('.textarea-phone-number').val() + '</p><button class="myButton delete">Delete</button></li>');
+      $('.poll-phone-list').append('<li class="phoneItem"><p class="optionTitle">' + $('.textarea-phone-number').val() + '</p><button class="myButton delete">Delete</button></li>');
       }
     });
 
@@ -120,12 +117,16 @@ $(() => {
       .on('click', '.delete', (function(event){
         event.preventDefault();
         $(this).closest('li').remove();
-      }))
+      }));
 
     $('#submitPoll').click(function(event) {
+      $('phoneItem').each(function(){
+
+      });
       event.preventDefault();
+      //makeAjaxPush(poll);
       console.log("TEST");
-    })
+    });
 //END OF PHONE NUMBER PAGE//
 });
 
