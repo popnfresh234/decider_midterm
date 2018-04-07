@@ -27,7 +27,7 @@ module.exports = (knex) => {
   //*********************************************
 
 
-  router.get("/polls/:id", (req, res)=> {
+  router.get("/:id", (req, res)=> {
     let id = req.params.id;
     knex('poll')
     .innerJoin('option', 'poll.id', '=', 'option.poll_id')
@@ -42,7 +42,7 @@ module.exports = (knex) => {
   //*** GET polls/:id/links ***
   //*********************************************
 
-  router.get("/polls/:id/links", (req, res) => {
+  router.get("/:id/links", (req, res) => {
     let id = req.params.id;
     knex('phone')
     .where('poll_id', id)
@@ -73,14 +73,13 @@ module.exports = (knex) => {
   //*********************************************
 
 
-  router.get("/polls/:id/result", (req, res)=> {
+  router.get("/:id/result", (req, res)=> {
     let id = req.params.id;
     knex('poll')
     .join('option', 'poll.id', '=', 'option.poll_id')
     .where('poll.id', id)
     .orderBy('rank', 'desc')
     .then((results) => {
-      console.log(results);
       res.render('results', {results});
     });
   });
@@ -91,7 +90,7 @@ module.exports = (knex) => {
   //*********************************************
 
 
-  router.post("/polls/", (req, res) => {
+  router.post("/", (req, res) => {
     let poll = req.body;
     //Cet poll data form poll object
     let title = poll.ptitle;
@@ -134,9 +133,8 @@ module.exports = (knex) => {
   //*** PUT/ polls/:id ***
   //*********************************************
 
-  router.put("/polls/:id", (req, res) => {
+  router.put("/:id", (req, res) => {
     let id = req.params.id;
-    console.log('THIS IS A PUT', req.body);
     knex('poll')
     .select('email')
     .where('id', id)
