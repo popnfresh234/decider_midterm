@@ -13,17 +13,11 @@ exports.up = function(knex, Promise) {
       table.integer('rank').defaultTo(0);
       table.integer('poll_id').references('id').inTable('poll');
     }),
-    knex.schema.createTable('phone', function(table) {
-      table.increments('id').primary();
-      table.text('number').notNull();
-      table.integer('poll_id').references('id').inTable('poll');
-    }),
   ])
 };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('phone'),
     knex.schema.dropTable('option'),
     knex.schema.dropTable('poll'),
   ])
