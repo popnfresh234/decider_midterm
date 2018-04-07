@@ -71,12 +71,12 @@ $(() => {
       event.preventDefault();
       $(this).closest('li').remove();
     }))
-    .on('mouseenter', '.optionItem', (function() {
-      $(this).find('.description').removeClass('d-none');
-    }))
-    .on('mouseleave', '.optionItem', function() {
-      $(this).find('.description').addClass('d-none');
-    });
+    // .on('mouseenter', '.optionItem', (function() {
+    //   $(this).find('.description').removeClass('d-none');
+    // }))
+    // .on('mouseleave', '.optionItem', function() {
+    //   $(this).find('.description').addClass('d-none');
+    // });
 
     $('#enterOption').click(function(event) {
       event.preventDefault();
@@ -84,7 +84,7 @@ $(() => {
       if (optionTitle === '') {
         $.flash('Please enter an option title.');
       }else {
-      $('.poll-options').append('<li class="optionItem"><p class="opTitle">' + $('.option').val() + '</p><p class="description opTitle d-none">' + $('.description').val() + '</p><button class="myButton delete">Delete</button></li>');
+      $('.poll-options').append('<li class="optionItem option-box"><p class="opTitle">' + $('.option').val() + '&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp' + $('.description').val() + '</p><button class="myButton delete">Delete</button></li>');
       }
     });
 
