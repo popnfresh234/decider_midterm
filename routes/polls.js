@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const mailgun = require('../mailgun.js');
+const PhoneNumber = require('awesome-phonenumber');
 require('dotenv').config();
 
 
@@ -17,7 +18,25 @@ module.exports = (knex) => {
 
   router.get("/", (req, res) => {
     res.render('index');
+
   });
+
+  //TESTING//
+  router.post("/phone", (req, res) => {
+    let rawNumber = req.body.tel;
+    let parsedNumber = new PhoneNumber( rawNumber, 'US' );
+    console.log(parsedNumber);
+    console.log(parsedNumber.isValid());
+
+        client.messages.create({
+          body: 'http://192.168.0.14:8080/polls/1',
+          to: parsedNumber.getNumber('e164'),
+          from: process.env.TWILIO_NUMBER
+        }).then((message)=>{
+          console.log(message.sid);
+        });
+  });
+  //end testing
 
   router.get("/polls/:id", (req, res)=> {
     let id = req.params.id;
@@ -57,10 +76,8 @@ module.exports = (knex) => {
     .insert({ptitle: title, email})
     .then((id) =>  {
         //Handle inseting options here
-        let twilioMsg = title + " "; //Build twilio msg
         optionArray.forEach((option, index) => {
           let title = option.title;
-          twilioMsg = twilioMsg + (index + 1) + " " + title + " ";
           let description = option.description;
           knex('option')
           .insert({title, description, poll_id: id[0]})
@@ -69,16 +86,6 @@ module.exports = (knex) => {
               console.log(err);
             }
           });
-        });
-
-
-
-        client.messages.create({
-          body: twilioMsg,
-          to: '+16048896508',
-          from: process.env.TWILIO_NUMBER
-        }).then((message)=>{
-          console.log(message.sid);
         });
         res.send({redirect: '/polls/' + id +'/links'});
       });

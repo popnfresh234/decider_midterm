@@ -12,6 +12,7 @@
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
+    "awesome-phonenumber": "^2.2.5",
     "body-parser": "^1.15.2",
     "bootstrap": "^4.0.0",
     "dotenv": "^2.0.0",
