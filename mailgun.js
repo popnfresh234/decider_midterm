@@ -9,7 +9,7 @@ var sendEmail = function(email, id) {
 var data = {
   from: 'decidermidterm@gmail.com',
   to: email,
-  subject: 'Hello',
+  subject: 'Wow, someone voted!',
   html: `<p>Someone voted!&nbsp; Check out&nbsp;<a href="http://locahost:8080/polls/`+ id + `/result">http://locahost:8080/polls/1/result</a>&nbsp;to see your results!</p>`
 
 };
