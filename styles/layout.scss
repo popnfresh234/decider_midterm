@@ -44,7 +44,7 @@ body {
 
 .home {
   width: 82%;
-  margin: 7%;
+  margin: 7rem;
   text-align: -webkit-center;
 }
 
@@ -61,7 +61,6 @@ fieldset {
   background-color: #F5F9FA;
   width: 70%;
   height: 66vh;
-/*  padding-top: 8%;*/
   opacity: 0.9;
 }
 
@@ -85,10 +84,6 @@ fieldset {
   width: 30%;
   border-radius: 15px;
   margin-top: 4%;
-}
-
-.poll-title-page {
-  margin-top: 20%;
 }
 
 .options {
@@ -132,7 +127,7 @@ fieldset {
   border-radius: 20px;
 }
 
-.desc {
+.description {
   background-color: #c7c7c7;
   width: max-content;
   padding: 1%;
@@ -147,9 +142,6 @@ fieldset {
     margin: auto;
 }
 
-.ptitle-container {
-  padding-top: 13%;
-}
 
 .poll-title {
   margin: 11% 20px 20px 20px;
