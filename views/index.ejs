@@ -29,7 +29,9 @@
     <nav class="nav">
       <a class="navbar-brand" href="/">
         <a class="navbar-brand p-0" href="/" target="_blank">
-          <i class="owl fab fa-earlybirds"></i>
+
+            <i class="owl fa-3x fab fa-earlybirds"></i>
+
           <span>Decider</span>
         </a>
       </a>
@@ -37,7 +39,7 @@
 
     <section class="home">
       <div class="container-fluid">
-        <h1 id="main-header">Welcome to Decider</h1>
+        <h1 class="main-header">Welcome to Decider</h1>
         <form id="email-form" name="email">
           <fieldset>
               <input class="email" name="email" placeholder="Enter email...">
@@ -47,9 +49,9 @@
       </div>
     </section>
 
-    <section class="poll-title-page d-none">
+    <section class="home poll-title-page d-none">
       <div class="ptitle-container container-fluid">
-        <h2 class="poll-header">Name your poll and let us help you make a decision</h2>
+        <h2 class="main-header poll-header">Name your poll and let us help you make a decision</h2>
         <form>
           <fieldset>
             <textarea class="poll-title" placeholder="What's your poll name?"></textarea>
@@ -59,8 +61,8 @@
       </div>
     </section>
 
-    <section class="poll-options-page d-none container-fluid">
-      <h1 class="poll-title">What movie should we see?</h1>
+    <section class="home poll-options-page d-none container-fluid">
+      <h1 class="main-header poll-title">What movie should we see?</h1>
       <h2 class="options">Give me the options!</h2>
       <form>
         <textarea class="option" placeholder="Option"></textarea>
@@ -72,9 +74,21 @@
       </ul>
     </section>
 
+    <section class="phone-number home poll-phone-page d-none container-fluid">
+      <h1 class="main-header poll-title">What movie should we see?</h1>
+      <h2 class="options">Send the poll to your friends</h2>
+      <form>
+        <textarea class="textarea-phone-number" placeholder="Enter phone number..."></textarea>
+        <button class="myButton btn-primary" id="enterPhoneNumber">Enter Phone Number</button>
+        <button class="myButton btn-primary" id="submitPoll" type="submit">Submit Poll</button>
+      </form>
+      <ul class="poll-phone-list" >
+      </ul>
+    </section>
+
     <section class="created-poll-page d-none container-fluid">
       <h1>Poll Created!</h1>
-      <h2 class="poll-title">What movie should we see?</h2>
+      <h2 class="main-header poll-title">What movie should we see?</h2>
       <h4 id="share-poll">Share</h4>
       <a href="http://localhost:8080/polls/1">decider/movi</a>
       <h4 id="poll-results">Results</h4>
