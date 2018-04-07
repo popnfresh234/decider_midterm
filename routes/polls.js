@@ -18,25 +18,7 @@ module.exports = (knex) => {
 
   router.get("/", (req, res) => {
     res.render('index');
-
   });
-
-  //TESTING//
-  router.post("/phone", (req, res) => {
-    let rawNumber = req.body.tel;
-    let parsedNumber = new PhoneNumber( rawNumber, 'US' );
-    console.log(parsedNumber);
-    console.log(parsedNumber.isValid());
-
-        client.messages.create({
-          body: 'http://192.168.0.14:8080/polls/1',
-          to: parsedNumber.getNumber('e164'),
-          from: process.env.TWILIO_NUMBER
-        }).then((message)=>{
-          console.log(message.sid);
-        });
-  });
-  //end testing
 
   router.get("/polls/:id", (req, res)=> {
     let id = req.params.id;
@@ -50,6 +32,26 @@ module.exports = (knex) => {
 
   router.get("/polls/:id/links", (req, res) => {
     let id = req.params.id;
+    //Send out SMS alerts
+    knex('phone')
+    .where('poll_id', id)
+    .then((results) => {
+        //Loop over phone numbers and send out SMS
+        results.forEach((phoneNumber) => {
+
+          let parsedNumber = new PhoneNumber( phoneNumber, 'US' );
+          console.log(parsedNumber);
+          console.log(parsedNumber.isValid());
+
+          client.messages.create({
+            body: 'http://192.168.0.14:8080/polls/1',
+            to: parsedNumber.getNumber('e164'),
+            from: process.env.TWILIO_NUMBER
+          }).then((message)=>{
+            console.log(message.sid);
+          });
+        });
+      });
     res.render('links', {id});
   });
 
