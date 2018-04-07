@@ -1,4 +1,0 @@
-$(() => {
-  $('.poll-options').on('mouseenter'
-
-});

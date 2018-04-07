@@ -62,6 +62,7 @@ module.exports = (knex) => {
     .where('poll.id', id)
     .orderBy('rank', 'desc')
     .then((results) => {
+      console.log(results);
       res.render('results', {results});
     });
   });
@@ -72,6 +73,7 @@ module.exports = (knex) => {
     let title = poll.ptitle;
     let email = poll.email;
     let optionArray = poll.options;
+    let phoneNumberArray = poll.phoneNumbers;
     //Insert poll
     knex('poll')
     .returning('id')
