@@ -107,11 +107,6 @@ fieldset {
   text-align: -webkit-center;
 }
 
-.poll-title {
-  font-family: 'Montserrat', sans-serif;
-  color: #244751;
-}
-
 .instruction {
   padding: 2% 0 2% 0;
   background-color: grey;
@@ -132,7 +127,33 @@ fieldset {
 .desc {
   background-color: #c7c7c7;
   bor
+}
 
+/* POLL TITLE PAGE*/
+
+.poll-title {
+  font-family: 'Montserrat', sans-serif;
+  color: #244751;
+    margin: auto;
+}
+
+.ptitle-container {
+  padding-top: 13%;
+}
+
+.poll-title {
+  margin: 11% 20px 20px 20px;
+  width: 85%;
+  height: 14vh;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-size: 30px;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 15px;
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";
