@@ -67,15 +67,32 @@ $(() => {
 
       $('.poll-options-page').hide();
 
+      var optionArray = []
+      console.log(email);
+      $('li').each(function(index) {
+        optionArray.push({title: $(this).find('.optionTitle').text(),
+        description: $(this).find('.description').text()
+       });
+      })
+      poll.options = optionArray;
+      console.log(poll);
+
+      $('.poll-options-page').addClass('d-none');
+      // $('.created-poll-page').removeClass('d-none');
+         $('.phone-number').removeClass('d-none');
     });
 
-    $('.createPoll').on('click',function(poll) {
-      $('.poll-container').append(poll.title);
-      options.forEach(function(option) {
-        $('.poll-container').append("<p id='optionTitle'>" + option.title + "</p>");
-        $('.poll-container').append("<p id='optionDescription'>" + option.description + "</p>");
+    $('.poll-options-page')
+      .on('click', '.delete', (function(event){
+        event.preventDefault();
+        $(this).closest('li').remove();
+      }))
+      .on('mouseenter', '.optionItem', (function() {
+        $(this).find('.description').removeClass('d-none');
+      }))
+      .on('mouseleave', '.optionItem', function() {
+        $(this).find('.description').addClass('d-none');
       });
-    });
 
     $('#enterOption').click(function(event) {
       event.preventDefault();
@@ -83,23 +100,34 @@ $(() => {
       if (optionTitle === '') {
         $.flash('Please enter an option title.')
       }else {
-        $('.poll-options').append('<li class="optionItem"><p class="optionTitle">' + $('.option').val() + '</p> <p class="description d-none">' + $('.description').val() + '</p><button class="delete">Delete</button></li>');
+      $('.poll-options').append('<li class="optionItem"><p class="optionTitle">' + $('.option').val() + '</p><p class="description d-none">' + $('.description').val() + '</p><button class="myButton delete">Delete</button></li>');
+      }
+
+    });
+
+//PHONE NUMBER PAGE//
+    $('#enterPhoneNumber').click(function(event) {
+      event.preventDefault();
+      var phoneNumber = $('.textarea-phone-number').val();
+      if (phoneNumber === '') {
+        $.flash('Please enter a phone number.')
+      }else {
+      $('.poll-phone-list').append('<li class="optionItem"><p class="optionTitle">' + $('.textarea-phone-number').val() + '</p><button class="myButton delete">Delete</button></li>');
       }
     });
 
-    $('.poll-options-page')
-    .on('click', '.delete', (function(event){
+    $('.poll-phone-page')
+      .on('click', '.delete', (function(event){
+        event.preventDefault();
+        $(this).closest('li').remove();
+      }))
+
+    $('#submitPoll').click(function(event) {
       event.preventDefault();
-      $(this).closest('li').remove();
-    }))
-    .on('mouseenter', '.optionItem', (function() {
-      $(this).find('.description').removeClass('d-none');
-    }))
-    .on('mouseleave', '.optionItem', function() {
-      $(this).find('.description').addClass('d-none');
+      console.log("TEST");
     })
-    ;
-  });
+//END OF PHONE NUMBER PAGE//
+});
 
 let options = poll.options;
 
