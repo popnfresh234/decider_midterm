@@ -84,7 +84,7 @@ $(() => {
       if (optionTitle === '') {
         $.flash('Please enter an option title.');
       }else {
-      $('.poll-options').append('<li class="optionItem"><p class="opTitle">' + $('.option').val() + '</p><p class="description d-none">' + $('.description').val() + '</p><button class="myButton delete">Delete</button></li>');
+      $('.poll-options').append('<li class="optionItem"><p class="opTitle">' + $('.option').val() + '</p><p class="description opTitle d-none">' + $('.description').val() + '</p><button class="myButton delete">Delete</button></li>');
       }
     });
 

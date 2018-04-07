@@ -121,7 +121,7 @@ fieldset {
 .opTitle {
   margin-bottom: 0%;
   width: 50%;
-  font-size: 50%;
+  font-size: 20px;
   padding: 2% 0 2% 0;
   background-color: #ececec;
   color: #244751;
@@ -130,10 +130,15 @@ fieldset {
 }
 
 .description {
-  background-color: #c7c7c7;
-  width: max-content;
-  padding: 1%;
-  /*border-radius:*/
+  margin-top: 0.2rem;
+  width: 40%;
+  font-size: 20px;
+  padding: 2% 0 2% 0;
+  background-color: #ececec;
+  color: #244751;
+  opacity: 0.9;
+  border-radius: 20px;
+  overflow-wrap: break-word;
 }
 
 /* POLL TITLE PAGE*/
@@ -186,9 +191,17 @@ fieldset {
   height: 3rem;
   width: 10rem;
   border-radius: 15px;
-  margin-top: 4%;
   margin-left: 1rem;
 
+}
+
+.option-box {
+  display: flex;
+}
+
+#option-fieldset {
+  height: max-content;
+  padding: 3rem;
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";
