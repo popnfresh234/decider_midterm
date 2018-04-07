@@ -4,17 +4,18 @@ var DOMAIN = 'sandboxb55326195b3b4f61aec5dbf4be9b98de.mailgun.org';
 var mailgun = require('mailgun-js')({apiKey: api_key, domain: DOMAIN});
 const emailData = require('./routes/polls.js');
 
-var sendEmail = function(email) {
+var sendEmail = function(email, id) {
 
 var data = {
   from: 'decidermidterm@gmail.com',
   to: email,
   subject: 'Hello',
-  text: 'Testing some Mailgun awesomness!'
+  html: `<p>Someone voted!&nbsp; Check out&nbsp;<a href="http://locahost:8080/polls/`+ id + `/result">http://locahost:8080/polls/1/result</a>&nbsp;to see your results!</p>`
+
 };
   mailgun.messages().send(data, function (error, body) {
     console.log(body);
   });
-}
+};
 
 module.exports = sendEmail;

@@ -95,29 +95,7 @@ $(() => {
         $(this).find('.description').addClass('d-none');
       })
       ;
-
-
-
   });
-
-const poll = {
-
-  "title": "What food?",
-  "email": "bob@bob.bob",
-  "options": [
-  { "title": "Cheeseburger",
-  "description": "Hot and cheesy",
-  "rank": 0
-},
-{ "title": "Sushi",
-"description": "Fresh and delicious",
-"rank": 0
-},
-{ "title": "Pasta",
-"description": "Yummy",
-"rank": 0
-}]
-};
 
 let options = poll.options;
 

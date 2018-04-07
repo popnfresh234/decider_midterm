@@ -70,7 +70,7 @@ module.exports = (knex) => {
     .where('id', id)
     .then((result) => {
       let email = result[0].email;
-      mailgun(email);
+      mailgun(email, id);
     });
 
     let optionsArray = req.body.data;

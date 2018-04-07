@@ -26,8 +26,8 @@
       <h1>The Results Are In!</h1>
       <h2 class= "poll-title"><%= results[0].ptitle %></h2>
       <ul class= "poll-options">
-        <% results.forEach(function(poll) { %>
-          <li><p class = "optionTitle"><%= poll.title %></p><p class = "d-none"><%= poll.description %></li>
+        <% results.forEach(function(option) { %>
+          <li><p class = "optionTitle"><%= option.title %></p><p class = "d-none"><%= option.description %><p>Rank: <%= option.rank %></p></li>
         <% }); %>
       </ul>
     </div>
