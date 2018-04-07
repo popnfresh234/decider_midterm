@@ -79,4 +79,30 @@ fieldset {
   margin-top: 4%;
 }
 
+
+/* POLL TITLE PAGE*/
+
+.poll-title-page {
+  margin: auto;
+}
+
+.ptitle-container {
+  padding-top: 13%;
+}
+
+.poll-title {
+  margin: 11% 20px 20px 20px;
+  width: 85%;
+  height: 14vh;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-size: 30px;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 15px;
+}
+
 @import "node_modules/bootstrap/scss/bootstrap";
