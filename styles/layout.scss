@@ -4,13 +4,18 @@ $body-color: #F5F9FA;
 $theme-colors: (
   "primary": #F3D13F
   );
+$font-family-base: 'Asap Condensed', sans-serif;
 /*$btn-primary:*/
 
 /* NAVBAR STYLES */
-.navbar {
-  background-color: #91B1EB;
+.nav {
+  background-color: #C8B3C2;
   height: 100px;
   font-family: 'Montserrat', sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 span {
@@ -37,19 +42,20 @@ body {
 }
 
 .jumbotron-fluid {
-  background-image: url('../img/bg-img.jpg');
+  background-image: url('../img/blur.jpg');
   height: 100vh;
   display: flex;
   justify-content: center;
- /* width: auto;*/
 }
 
 fieldset {
+  display: flex;
   border-radius: 25px;
   background-color: #F5F9FA;
   width: 70%;
   height: 66vh;
   padding-top: 8%;
+  opacity: 0.9;
 }
 
 .email {
