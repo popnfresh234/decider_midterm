@@ -24,12 +24,16 @@
     "morgan": "^1.7.0",
     "node-sass": "^4.8.3",
     "node-sass-middleware": "^0.9.8",
-    "pg": "^6.0.2",
+    "pg": "^7.4.1",
     "twilio": "^3.14.0"
   },
   "devDependencies": {
     "nodemon": "^1.17.3",
     "sass-watch": "^0.1.0",
     "sqlite3": "^3.1.4"
+  },
+  "engines": {
+    "node": "8.9.4",
+    "npm" : "5.8.0"
   }
 }
