@@ -135,7 +135,7 @@ fieldset {
   background-color: #ececec;
   color: #244751;
   opacity: 0.9;
-  border-radius: 20px 0 0 20px;
+  border-radius: 20px;
   overflow-wrap: break-word;
 }
 
@@ -241,7 +241,7 @@ fieldset {
   padding-bottom: 2rem;
 }
 
-li:first-child {
+/*li:first-child {
   border: 5px solid #fce955;
   border-radius: 24px;
   -webkit-animation: mymove 1.5s infinite;
@@ -255,7 +255,7 @@ li:first-child {
 
 @-webkit-keyframes mymove {
     50% {border-color: #41496b;}
-}
+}*/
 
 .enteredDescription {
   margin-bottom: 0;
@@ -265,7 +265,7 @@ li:first-child {
   background-color: #ececec;
   color: #244751;
   opacity: 0.9;
-  border-radius: 0 20px 20px 0;
+  border-radius: 20px;
   overflow-wrap: break-word;
 }
 
