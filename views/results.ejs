@@ -30,7 +30,7 @@
         <h2 class= "poll-title"><%= results[0].ptitle %></h2>
         <ul class= "poll-options">
           <% results.forEach(function(option) { %>
-            <li class="option-box"><p class = "optionTitle opTitle" id="result-option-title"><%= option.title %></p><p class="opTitle">Points: <%= option.rank %></p></li>
+            <li class="option-box"><p class ="optionTitle opTitle" id="result-option-title"><%= option.title %></p><p class="opTitle">Points: <%= option.rank %></p></li>
           <% }); %>
         </ul>
       </div>

@@ -128,14 +128,14 @@ fieldset {
 }
 
 .opTitle {
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   width: 50%;
   font-size: 20px;
   padding: 2% 0 2% 0;
   background-color: #ececec;
   color: #244751;
   opacity: 0.9;
-  border-radius: 20px;
+  border-radius: 20px 0 0 20px;
   overflow-wrap: break-word;
 }
 
@@ -239,6 +239,34 @@ fieldset {
 #votingBox {
   height: max-content;
   padding-bottom: 2rem;
+}
+
+li:first-child {
+  border: 5px solid #fce955;
+  border-radius: 24px;
+  -webkit-animation: mymove 1.5s infinite;
+  animation: mymove 1.5s infinite;
+  height: max-content;
+}
+
+@keyframes mymove {
+    50% {border-color: #41496b;}
+}
+
+@-webkit-keyframes mymove {
+    50% {border-color: #41496b;}
+}
+
+.enteredDescription {
+  margin-bottom: 0;
+  width: 50%;
+  font-size: 20px;
+  padding: 2% 0 2% 0;
+  background-color: #ececec;
+  color: #244751;
+  opacity: 0.9;
+  border-radius: 0 20px 20px 0;
+  overflow-wrap: break-word;
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";
