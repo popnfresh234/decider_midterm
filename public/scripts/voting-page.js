@@ -1,8 +1,9 @@
 $(function() {
 
   function ajaxVote(objectArray){
+    console.log('ID: ', $('.data-class').data('pollid'));
     $.ajax({
-      url: '/polls/' + $('h2').data('pollid'),
+      url: '/polls/' + $('.data-class').data('pollid'),
       method: 'PUT',
       data: {data: objectArray},
       dataType: 'json',

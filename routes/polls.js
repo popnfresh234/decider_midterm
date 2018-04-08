@@ -19,6 +19,8 @@ module.exports = (knex) => {
         if (err) {
           console.log(err);
         }
+      }).catch((err) => {
+        console.log(err);
       });
     });
   }
@@ -29,6 +31,8 @@ module.exports = (knex) => {
         knex('phone')
         .insert({number, poll_id: id[0]})
         .then((err) => {
+          console.log(err);
+        }).catch((err) => {
           console.log(err);
         });
       });
@@ -48,6 +52,8 @@ module.exports = (knex) => {
     .where('poll.id', id)
     .then((results) => {
       res.render('poll', {results});
+    }).catch((err) => {
+      console.log(err);
     });
   });
 
@@ -69,7 +75,7 @@ module.exports = (knex) => {
 
           // DISABLED FOR THE MOMENT, TURN ON FOR PRESENTATION
           // client.messages.create({
-          //   body: 'Help make a decison!  Vote at http://10.30.30.23:8080/polls/' + id,
+          //   body: 'Help make a decison!  Vote at http://' + process.env.HOST + '/polls/' + id,
           //   to: parsedNumber.getNumber('e164'),
           //   from: process.env.TWILIO_NUMBER
           // }).then((message)=>{
@@ -78,8 +84,10 @@ module.exports = (knex) => {
           //   console.log("ERROR", err);
           // });
         });
+      }).catch((err) => {
+        console.log(err);
       });
-    res.render('links', {id});
+    res.render('links', {id, host: process.env.HOST});
   });
 
   //*********************************************
@@ -95,6 +103,8 @@ module.exports = (knex) => {
     .orderBy('rank', 'desc')
     .then((results) => {
       res.render('results', {results});
+    }).catch((err) => {
+      console.log(err);
     });
   });
 
@@ -120,6 +130,8 @@ module.exports = (knex) => {
       insertOptions(optionArray, id);
       insertPhoneNumbers(phoneNumberArray, id);
       res.send({redirect: '/polls/' + id +'/links'});
+    }).catch((err) => {
+      console.log(err);
     });
   });
 
@@ -130,12 +142,15 @@ module.exports = (knex) => {
 
   router.put("/:id", (req, res) => {
     let id = req.params.id;
+    console.log("THIS IS THE ID:", id);
     knex('poll')
     .select('email')
     .where('id', id)
     .then((result) => {
       let email = result[0].email;
       mailgun(email, id);
+    }).catch((err) => {
+      console.log(err);
     });
 
     let optionsArray = req.body.data;
