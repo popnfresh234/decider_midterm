@@ -21,32 +21,41 @@
     </script>
     <script type="text/javascript" src="/scripts/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="/scripts/voting-page.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
   </head>
 
-  <div class="pollsBod">
-    <nav class=“navbar navbar-expand-lg”>
-     <a class=“navbar-brand” href=“/” style=“height:100px”>
-       <a class=“navbar-brand p-0” href=“/” target=“_blank”>
-         <span>Decider</span>
-       </a>
-     </a>
-   </nav>
-   <h1 class="poll-title"><%= results[0].ptitle %></h1>
-    <div class="votingContainer">
-        <div class="votingArea">
-          <h2 class="instruction" data-pollid="<%= results[0].poll_id %>">Rank the Options</h2>
-          <ul class="options" id="sortable">
-            <% results.forEach(function(e) { %>
-              <li class="ui-state-default singleOption" data-id="<%= e.id %>" data-rank="<%= e.rank %>">
-                <p class="opTitle"><%= e.title %></p>
-                <p class="desc d-none"><%= e.description %></p>
-              </li>
-          <% }) %>
-          </ul>
-      </div>
-    </div>
-    <form method="PUT" class="btn btn-primary">
-      <button id="submitVote" class="btn-primary" type="submit" action=>Submit</button>
-    </form>
+  <body>
+    <div class="jumbotron-fluid mx-auto">
+    <section class="home poll poll-options-page container-fluid">
+
+       <nav class="nav">
+        <a class="navbar-brand" href="/">
+          <a class="navbar-brand p-0" href="/">
+              <i class="owl fa-3x fab fa-earlybirds"></i>
+            <span>Decider</span>
+          </a>
+        </a>
+      </nav>
+
+      <h1 class="main-header"><%= results[0].ptitle %></h1>
+      <fieldset id="votingBox">
+          <div class="votingArea">
+
+            <h1 class="main-header" data-pollid="<%= results[0].poll_id %>">Rank the Options</h2>
+            <ul class="poll-options votingpgUl" id="sortable">
+              <% results.forEach(function(e) { %>
+                <li class="votingpgLi" data-id="<%= e.id %>" data-rank="<%= e.rank %>">
+                  <p class="opTitle"><%= e.title %> - <%= e.description %></p>
+                </li>
+            <% }) %>
+            <form method="PUT" class="btn btn-primary">
+              <button id="submitVote" class="btn-primary" type="submit" action=>Submit</button>
+            </form>
+            </ul>
+          </form>
+        </div>
+      </fieldset>
+</section>
   </div>
+  </body>
 </html>

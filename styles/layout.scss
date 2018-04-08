@@ -105,7 +105,6 @@ fieldset {
 .votingArea {
   border-radius: 25px;
   background-color: #F5F9FA;
-  width: 70%;
   height: 66vh;
   color: black;
 }
@@ -212,6 +211,14 @@ fieldset {
 /*PHONE NUMBER*/
 .send-poll {
   color: #244751;
+}
+
+.votingpgUl {
+  padding: 0%;
+}
+
+.votingpgLi {
+  padding-top: 10px;
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";
