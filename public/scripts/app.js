@@ -98,7 +98,7 @@ $(function() {
     if (phoneNumber === '') {
       $.flash('Please enter a phone number.');
     }else {
-      $('.poll-phone-list').append('<li class="optionItem phoneItem"><p class="opTitle phoneNumber">' + $('.textarea-phone-number').val() + '</p><button class="myButton delete">Delete</button></li>');
+      $('.poll-phone-list').append('<li class="phoneItem"><p class="opTitle phoneNumber">' + $('.textarea-phone-number').val() + '</p><button class="myButton delete">Delete</button></li>');
     }
   });
 
