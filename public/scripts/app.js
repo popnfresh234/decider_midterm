@@ -17,7 +17,7 @@ $(function() {
   function buildOptionArray(){
     var optionArray = [];
     $('.optionItem').each(function(index) {
-      optionArray.push({title: $(this).find('.optionTitle').text(),
+      optionArray.push({title: $(this).find('.opTitle').text(),
        description: $(this).find('.description').text()
      });
     });
@@ -71,7 +71,7 @@ $(function() {
   .on('click', '.delete', (function(event){
     event.preventDefault();
     $(this).closest('li').remove();
-  }))
+  }));
   // .on('mouseenter', '.optionItem', (function() {
   //   $(this).find('.description').removeClass('d-none');
   // }))
@@ -98,7 +98,7 @@ $(function() {
     if (phoneNumber === '') {
       $.flash('Please enter a phone number.');
     }else {
-      $('.poll-phone-list').append('<li class="optionItem phoneItem"><p class="opTitle phoneNumber">' + $('.textarea-phone-number').val() + '</p><button class="myButton delete">Delete</button></li>');
+      $('.poll-phone-list').append('<li class="phoneItem"><p class="opTitle phoneNumber">' + $('.textarea-phone-number').val() + '</p><button class="myButton delete">Delete</button></li>');
     }
   });
 
