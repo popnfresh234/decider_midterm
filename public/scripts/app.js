@@ -94,6 +94,7 @@ $(function() {
       $.flash('Please enter an option title.');
     }else {
     $('.poll-options').append('<li class="optionItem option-box"><p class="opTitle">' + $('.option').val() + '&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp' + $('.description').val() + '</p><button class="myButton delete">Delete</button></li>');
+    $('.poll-input').val('');
     }
   });
 
@@ -106,6 +107,7 @@ $(function() {
       $.flash('Please enter a phone number.');
     }else {
       $('.poll-phone-list').append('<li class="phoneItem"><p class="opTitle phoneNumber">' + $('.textarea-phone-number').val() + '</p><button class="myButton delete">Delete</button></li>');
+      $('.poll-input').val('');
     }
   });
 
