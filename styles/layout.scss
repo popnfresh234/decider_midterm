@@ -110,6 +110,7 @@ fieldset {
 }
 
 .votingArea {
+  padding-top: 1rem;
   border-radius: 25px;
   background-color: #F5F9FA;
   color: black;
@@ -141,6 +142,7 @@ fieldset {
 /*PHONE NUMBER*/
 .send-poll {
   color: #244751;
+  margin-bottom: 2rem;
 }
 
 #submitPoll {
@@ -175,7 +177,7 @@ fieldset {
   width: 25rem;
   height: 8vh;
   padding: 1.375rem 0.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   margin-left:1rem;
   font-size: 1rem;
   line-height: 0.5;
