@@ -1,29 +1,34 @@
-# Node Skeleton
+# Decider
 
-## Project Setup
-
-1. Create your own empty repo on GitHub
-2. Clone this repository (do not fork)
-  - Suggestion: When cloning, specify a different folder name that is relevant to your project
-3. Remove the git remote: `git remote rm origin`
-4. Add a remote for your origin: `git remote add origin <your github repo URL>`
-5. Push to the new origin: `git push -u origin master`
-6. Verify that the skeleton code now shows up in your repo on GitHub
+Welcome to Decider.  Decider is a web app that utilizes Node, Express, EJS, Postgresql, SASS, AJAX, Twilio, Mailgun, and Awesome-Phone Number. The app allows users to create a poll, share it with their friends, and view the results of their friend's votes.  App is deployed to heroku at <https://decider2000.herokuapp.com/>, <https://decider-supreme.herokuapp.com/>, and <https://ultimatedecider.herokuapp.com/>
 
 ## Getting Started
 
-1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-2. Update the .env file with your correct local information
-3. Install dependencies: `npm i`
-4. Fix to binaries for sass: `npm rebuild node-sass`
-5. Run migrations: `npm run knex migrate:latest`
-  - Check the migrations folder to see what gets created in the DB
-6. Run the seed: `npm run knex seed:run`
-  - Check the seeds file to see what gets seeded in the DB
-7. Run the server: `npm run local`
-8. Visit `http://localhost:8080/`
+1. Fork this repository, then clone your fork of this repository.a
+2. Install dependencies using the `npm install` command.
+3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
+4. Go to <http://localhost:8080/> in your browser.
 
 ## Dependencies
 
-- Node 5.10.x or above
-- NPM 3.8.x or above
+- awesome-phonenumber
+- body-parser
+- bootstrap
+- dotenv
+- ejs
+- express
+- knex
+- knex-logger
+- mailgun-js
+- morgan
+- node-sass
+- node-sass-middleware
+- pg
+- twilio
+
+## Final prdouct
+
+!["Home Page"](https://github.com/popnfresh234/decider_midterm/blob/master/docs/decider-home-page.png)
+!["Links Page"](https://github.com/popnfresh234/decider_midterm/blob/master/docs/decider-links-page.png)
+!["Poll Creation Page"](https://github.com/popnfresh234/decider_midterm/blob/master/docs/decider-options-page.png)
+!["Voting Page"](https://github.com/popnfresh234/decider_midterm/blob/master/docs/decider-voting-page.png)
