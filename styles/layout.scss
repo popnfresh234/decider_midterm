@@ -5,6 +5,7 @@ $theme-colors: (
   "primary": #E0816A
   );
 $font-family-base: 'Asap Condensed', sans-serif;
+
 /*$btn-primary:*/
 
 /* NAVBAR STYLES */
@@ -80,6 +81,8 @@ fieldset {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 15px;
+  outline:0px !important;
+    -webkit-appearance:none;
 }
 
 .myButton {
@@ -89,6 +92,8 @@ fieldset {
   border-radius: 15px;
   margin-top: 1.5%;
   margin-left: 1rem;
+  outline:0px !important;
+    -webkit-appearance:none;
 }
 
 .options {
@@ -156,6 +161,8 @@ fieldset {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 15px;
+  outline:0px !important;
+    -webkit-appearance:none;
 }
 
 /* POLL OPTIONS PAGE */
@@ -178,6 +185,8 @@ fieldset {
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 15px;
+  outline:0px !important;
+    -webkit-appearance:none;
 }
 
 .optionBtn {
@@ -185,6 +194,8 @@ fieldset {
   width: 10rem;
   border-radius: 15px;
   margin-left: 1rem;
+  outline:0px !important;
+    -webkit-appearance:none;
 }
 
 .option-box {
