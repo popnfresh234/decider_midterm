@@ -93,7 +93,7 @@ $(function() {
     if (optionTitle === '') {
       $.flash('Please enter an option title.');
     }else {
-    $('.poll-options').append('<li class="optionItem option-box"><p class="opTitle">' + $('.option').val() + '&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp' + $('.description').val() + '</p><button class="myButton delete">Delete</button></li>');
+    $('.poll-options').append('<li class="optionItem option-box"><p class="opTitle">' + $('.option').val() + '</p>&nbsp&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp<p class="description">' + $('.description').val() + '</p><button class="myButton delete">Delete</button></li>');
     $('.poll-input').val('');
     }
   });

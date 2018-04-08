@@ -3,17 +3,11 @@ const router  = express.Router();
 const mailgun = require('../mailgun.js');
 const PhoneNumber = require('awesome-phonenumber');
 require('dotenv').config();
-
-
-//Twilio config
 const twilio = require('twilio');
-const accountSid = 'AC7b9844743f81862b10662b3d94596ab5';
-const authToken = '7489886f8680955b9485db6510d772b6';
-
 
 module.exports = (knex) => {
 
-  var client = new twilio(accountSid, authToken);
+  var client = new twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
 
   function insertOptions(optionArray, id) {
     optionArray.forEach((option) => {
@@ -25,6 +19,8 @@ module.exports = (knex) => {
         if (err) {
           console.log(err);
         }
+      }).catch((err) => {
+        console.log(err);
       });
     });
   }
@@ -35,6 +31,8 @@ module.exports = (knex) => {
         knex('phone')
         .insert({number, poll_id: id[0]})
         .then((err) => {
+          console.log(err);
+        }).catch((err) => {
           console.log(err);
         });
       });
@@ -54,6 +52,8 @@ module.exports = (knex) => {
     .where('poll.id', id)
     .then((results) => {
       res.render('poll', {results});
+    }).catch((err) => {
+      console.log(err);
     });
   });
 
@@ -73,9 +73,9 @@ module.exports = (knex) => {
 
           let parsedNumber = new PhoneNumber( result.number, 'US' );
 
-          //DISABLED FOR THE MOMENT, TURN ON FOR PRESENTATION
+          // DISABLED FOR THE MOMENT, TURN ON FOR PRESENTATION
           // client.messages.create({
-          //   body: 'Help make a decison!  Vote at http://10.30.30.23:8080/polls/' + id,
+          //   body: 'Help make a decison!  Vote at http://' + process.env.HOST + '/polls/' + id,
           //   to: parsedNumber.getNumber('e164'),
           //   from: process.env.TWILIO_NUMBER
           // }).then((message)=>{
@@ -84,8 +84,10 @@ module.exports = (knex) => {
           //   console.log("ERROR", err);
           // });
         });
+      }).catch((err) => {
+        console.log(err);
       });
-    res.render('links', {id});
+    res.render('links', {id, host: process.env.HOST});
   });
 
   //*********************************************
@@ -101,6 +103,8 @@ module.exports = (knex) => {
     .orderBy('rank', 'desc')
     .then((results) => {
       res.render('results', {results});
+    }).catch((err) => {
+      console.log(err);
     });
   });
 
@@ -126,6 +130,8 @@ module.exports = (knex) => {
       insertOptions(optionArray, id);
       insertPhoneNumbers(phoneNumberArray, id);
       res.send({redirect: '/polls/' + id +'/links'});
+    }).catch((err) => {
+      console.log(err);
     });
   });
 
@@ -136,12 +142,15 @@ module.exports = (knex) => {
 
   router.put("/:id", (req, res) => {
     let id = req.params.id;
+    console.log("THIS IS THE ID:", id);
     knex('poll')
     .select('email')
     .where('id', id)
     .then((result) => {
       let email = result[0].email;
       mailgun(email, id);
+    }).catch((err) => {
+      console.log(err);
     });
 
     let optionsArray = req.body.data;
