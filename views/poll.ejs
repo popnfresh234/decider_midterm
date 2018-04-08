@@ -45,7 +45,7 @@
             <ul class="poll-options votingpgUl" id="sortable">
               <% results.forEach(function(e) { %>
                 <li class="votingpgLi" data-id="<%= e.id %>" data-rank="<%= e.rank %>">
-                  <p class="opTitle"><%= e.title %> - <%= e.description %></p>
+                  <p class="opTitle"><%= e.title %><%= e.description %></p>
                 </li>
               <% }) %>
             </ul>
