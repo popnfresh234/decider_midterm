@@ -2,7 +2,7 @@ $(function() {
 
   function ajaxVote(objectArray){
     $.ajax({
-      url: '/polls/' + $('h2').data('pollid'),
+      url: '/polls/' + $('.data-class').data('pollid'),
       method: 'PUT',
       data: {data: objectArray},
       dataType: 'json',
