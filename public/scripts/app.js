@@ -1,4 +1,6 @@
 $(function() {
+  //Global vars to hold poll info
+  var pollOptions = [];
 
   function ajaxPost(poll){
     $.ajax({
@@ -61,9 +63,14 @@ $(function() {
   //Renders the phone number page
   $('#createPoll').click(function(event){
     event.preventDefault();
-    $('.poll-options-page').hide();
-    $('.poll-options-page').addClass('d-none');
-    $('.phone-number').removeClass('d-none');
+    pollOptions = buildOptionArray();
+    if (pollOptions.length > 0) {
+      $('.poll-options-page').hide();
+      $('.poll-options-page').addClass('d-none');
+      $('.phone-number').removeClass('d-none');
+    } else {
+      alert('NOT DONE!');
+    }
   });
 
   //Hanldes sevents in the poll option page via bubbling up of events since they are dynamically generated
@@ -116,10 +123,8 @@ $(function() {
     var poll = {};
     poll.email = $('.email').val();
     poll.ptitle = $('.poll-title').val();
-    poll.options = buildOptionArray();
+    poll.options = pollOptions;
     poll.phoneNumbers = buildPhoneNumberArray();
-
-    console.log(poll);
     ajaxPost(poll);
   });
 });

@@ -15,11 +15,31 @@ module.exports = (knex) => {
 
   var client = new twilio(accountSid, authToken);
 
+  function insertOptions(optionArray, id) {
+    optionArray.forEach((option) => {
+      let title = option.title;
+      let description = option.description;
+      knex('option')
+      .insert({title, description, poll_id: id[0]})
+      .then((err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    });
+  }
 
-  router.get("/", (req, res) => {
-    res.render('index');
-  });
-
+  function insertPhoneNumbers(phoneNumberArray, id){
+    if (phoneNumberArray && phoneNumberArray.length > 0) {
+      phoneNumberArray.forEach((number) => {
+        knex('phone')
+        .insert({number, poll_id: id[0]})
+        .then((err) => {
+          console.log(err);
+        });
+      });
+    }
+  }
 
 
   //*********************************************
@@ -49,7 +69,7 @@ module.exports = (knex) => {
     .then((results) => {
 
         //Loop over phone numbers and send out SMS
-         results.forEach((result) => {
+        results.forEach((result) => {
 
           let parsedNumber = new PhoneNumber( result.number, 'US' );
 
@@ -63,7 +83,7 @@ module.exports = (knex) => {
           // }).catch((err) => {
           //   console.log("ERROR", err);
           // });
-         });
+        });
       });
     res.render('links', {id});
   });
@@ -92,7 +112,7 @@ module.exports = (knex) => {
 
   router.post("/", (req, res) => {
     let poll = req.body;
-    //Cet poll data form poll object
+    //Get poll data form poll object
     let title = poll.ptitle;
     let email = poll.email;
     let optionArray = poll.options;
@@ -103,29 +123,10 @@ module.exports = (knex) => {
     .returning('id')
     .insert({ptitle: title, email})
     .then((id) =>  {
-        //Handle inseting options here
-        optionArray.forEach((option, index) => {
-          let title = option.title;
-          let description = option.description;
-          knex('option')
-          .insert({title, description, poll_id: id[0]})
-          .then((err) => {
-            if (err) {
-              console.log(err);
-            }
-          });
-        });
-
-        phoneNumberArray.forEach((number) => {
-          knex('phone')
-          .insert({number, poll_id: id[0]})
-          .then((err) => {
-            console.log(err);
-          });
-        });
-
-        res.send({redirect: '/polls/' + id +'/links'});
-      });
+      insertOptions(optionArray, id);
+      insertPhoneNumbers(phoneNumberArray, id);
+      res.send({redirect: '/polls/' + id +'/links'});
+    });
   });
 
 
