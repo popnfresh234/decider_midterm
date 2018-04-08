@@ -48,9 +48,11 @@ $(function() {
   //Renders Poll Options Page
   $('#nextStep').click(function(event){
     event.preventDefault();
-    if ($('.poll-title').val() === '') {
+    var pollTitle = $('.poll-title').val();
+    if (pollTitle === '') {
       $.flash('Please enter a poll title.');
     } else {
+      $('.main-header').text(pollTitle);
       $('.poll-title-page').addClass('d-none');
       $('.poll-options-page').removeClass('d-none');
     }
@@ -96,7 +98,7 @@ $(function() {
     if (phoneNumber === '') {
       $.flash('Please enter a phone number.');
     }else {
-      $('.poll-phone-list').append('<li class="phoneItem"><p class="phoneNumber">' + phoneNumber + '</p><button class="myButton delete">Delete</button></li>');
+      $('.poll-phone-list').append('<li class="optionItem phoneItem"><p class="opTitle phoneNumber">' + $('.textarea-phone-number').val() + '</p><button class="myButton delete">Delete</button></li>');
     }
   });
 
