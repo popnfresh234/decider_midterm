@@ -41,7 +41,7 @@
       <fieldset id="votingBox">
           <div class="votingArea">
 
-            <h1 class="main-header" data-pollid="<%= results[0].poll_id %>">Rank the Options</h2>
+            <h1 class="options send-poll" data-pollid="<%= results[0].poll_id %>">Drag and drop to rank the options</h2>
             <ul class="poll-options votingpgUl" id="sortable">
               <% results.forEach(function(e) { %>
                 <li class="votingpgLi" data-id="<%= e.id %>" data-rank="<%= e.rank %>">
