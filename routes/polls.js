@@ -3,17 +3,11 @@ const router  = express.Router();
 const mailgun = require('../mailgun.js');
 const PhoneNumber = require('awesome-phonenumber');
 require('dotenv').config();
-
-
-//Twilio config
 const twilio = require('twilio');
-const accountSid = 'AC7b9844743f81862b10662b3d94596ab5';
-const authToken = '7489886f8680955b9485db6510d772b6';
-
 
 module.exports = (knex) => {
 
-  var client = new twilio(accountSid, authToken);
+  var client = new twilio(process.env.TWILIO_SID, process.env.TWILIO_AUTH_TOKEN);
 
   function insertOptions(optionArray, id) {
     optionArray.forEach((option) => {
@@ -73,7 +67,7 @@ module.exports = (knex) => {
 
           let parsedNumber = new PhoneNumber( result.number, 'US' );
 
-          //DISABLED FOR THE MOMENT, TURN ON FOR PRESENTATION
+          // DISABLED FOR THE MOMENT, TURN ON FOR PRESENTATION
           // client.messages.create({
           //   body: 'Help make a decison!  Vote at http://10.30.30.23:8080/polls/' + id,
           //   to: parsedNumber.getNumber('e164'),
