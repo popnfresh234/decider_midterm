@@ -111,7 +111,6 @@ fieldset {
 .votingArea {
   border-radius: 25px;
   background-color: #F5F9FA;
-  height: 66vh;
   color: black;
 }
 
@@ -231,6 +230,11 @@ fieldset {
 
 .home {
   height: 100vh;
+}
+
+#votingBox {
+  height: max-content;
+  padding-bottom: 2rem;
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";
