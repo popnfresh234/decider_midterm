@@ -69,7 +69,7 @@ $(function() {
       $('.poll-options-page').addClass('d-none');
       $('.phone-number').removeClass('d-none');
     } else {
-      alert('NOT DONE!');
+      $.flash('Please enter some options');
     }
   });
 
