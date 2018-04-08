@@ -25,12 +25,12 @@
         </a>
       </nav>
 
-     <div class="home" style="width:50vh">
+     <div class="home rank-container">
         <h1 class="main-header">The Results Are In!</h1>
         <h2 class= "poll-title"><%= results[0].ptitle %></h2>
         <ul class= "poll-options">
           <% results.forEach(function(option) { %>
-            <li><p class = "optionTitle opTitle"><%= option.title %></p><p class="opTitle">Rank: <%= option.rank %></p></li>
+            <li class="option-box"><p class = "optionTitle opTitle" id="result-option-title"><%= option.title %></p><p class="opTitle">Rank: <%= option.rank %></p></li>
           <% }); %>
         </ul>
       </div>

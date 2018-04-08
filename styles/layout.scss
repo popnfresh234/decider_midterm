@@ -189,7 +189,6 @@ fieldset {
   height: 3rem;
   width: 10rem;
   border-radius: 15px;
-  margin-left: 1rem;
 
 }
 
@@ -197,6 +196,7 @@ fieldset {
   display: flex;
   text-align: -webkit-center;
   margin-top: 8px;
+  margin-right: 1rem;
 }
 
 #option-fieldset {
@@ -273,6 +273,14 @@ fieldset {
 //     height: max-content;
 //     padding: 3rem;
 //   }
+
+    #result-option-title {
+      margin-right: 1rem;
+    }
+
+    .rank-container {
+      width: 100vh;
+    }
 
 //   @import "node_modules/bootstrap/scss/bootstrap";
 // >>>>>>> feature/background
