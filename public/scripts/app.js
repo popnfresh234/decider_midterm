@@ -56,7 +56,6 @@ $(function() {
     }
   });
 
-
   //Renders the phone number page
   $('#createPoll').click(function(event){
     event.preventDefault();

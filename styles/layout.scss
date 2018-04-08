@@ -9,7 +9,8 @@ $font-family-base: 'Asap Condensed', sans-serif;
 
 /* NAVBAR STYLES */
 .owl {
-  color: #000080;;
+  color: #000080;
+  margin: 0 1rem 0 1rem;
 }
 
 .nav {
@@ -206,6 +207,11 @@ fieldset {
 #option-fieldset {
   height: max-content;
   padding: 3rem;
+}
+
+/*PHONE NUMBER*/
+.send-poll {
+  color: #244751;
 }
 
 @import "node_modules/bootstrap/scss/bootstrap";

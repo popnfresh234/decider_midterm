@@ -27,10 +27,8 @@
 
     <nav class="nav">
       <a class="navbar-brand" href="/">
-        <a class="navbar-brand p-0" href="/" target="_blank">
-
+        <a class="navbar-brand p-0" href="/">
             <i class="owl fa-3x fab fa-earlybirds"></i>
-
           <span>Decider</span>
         </a>
       </a>
@@ -79,15 +77,20 @@
     </section>
 
     <section class="phone-number home poll-phone-page d-none container-fluid">
-      <h1 class="main-header poll-title">What movie should we see?</h1>
-      <h2 class="options">Send the poll to your friends</h2>
+
+      <h1 class="main-header"></h1>
       <form>
-        <textarea class="textarea-phone-number" placeholder="Enter phone number..."></textarea>
-        <button class="myButton btn-primary" id="enterPhoneNumber">Enter Phone Number</button>
-        <button class="myButton btn-primary" id="submitPoll" type="submit">Submit Poll</button>
+        <fieldset id="option-fieldset">
+          <h2 class="options send-poll">Send the poll to your friends</h2>
+          <textarea class="poll-input textarea-phone-number" placeholder="Enter phone number..."></textarea>
+          <button class="myButton btn-primary" id="enterPhoneNumber">Enter Phone Number</button>
+          <button class="myButton btn-primary" id="submitPoll" type="submit">Submit Poll</button>
+          <ul class="poll-phone-list" >
+          </ul>
+        </fieldset>
       </form>
-      <ul class="poll-phone-list" >
-      </ul>
+<!--       <ul class="poll-phone-list" >
+      </ul> -->
     </section>
 
     <section class="created-poll-page d-none container-fluid">
