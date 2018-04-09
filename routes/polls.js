@@ -73,16 +73,16 @@ module.exports = (knex) => {
 
           let parsedNumber = new PhoneNumber( result.number, 'US' );
 
-          // DISABLED FOR THE MOMENT, TURN ON FOR PRESENTATION
-          // client.messages.create({
-          //   body: 'Help make a decison!  Vote at http://' + process.env.HOST + '/polls/' + id,
-          //   to: parsedNumber.getNumber('e164'),
-          //   from: process.env.TWILIO_NUMBER
-          // }).then((message)=>{
-          //   console.log('MESSAGE ID: ', message.sid);
-          // }).catch((err) => {
-          //   console.log("ERROR", err);
-          // });
+//          DISABLED FOR THE MOMENT, TURN ON FOR PRESENTATION
+          client.messages.create({
+            body: 'Help make a decison!  Vote at http://' + process.env.HOST + '/polls/' + id,
+            to: parsedNumber.getNumber('e164'),
+            from: process.env.TWILIO_NUMBER
+          }).then((message)=>{
+            console.log('MESSAGE ID: ', message.sid);
+          }).catch((err) => {
+            console.log("ERROR", err);
+          });
         });
       }).catch((err) => {
         console.log(err);
