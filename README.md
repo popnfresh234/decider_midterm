@@ -26,7 +26,7 @@ Welcome to Decider.  Decider is a web app that utilizes Node, Express, EJS, Post
 - pg
 - twilio
 
-## Final prdouct
+## Final Product
 
 !["Home Page"](https://github.com/popnfresh234/decider_midterm/blob/master/docs/decider-home-page.png)
 !["Links Page"](https://github.com/popnfresh234/decider_midterm/blob/master/docs/decider-links-page.png)
